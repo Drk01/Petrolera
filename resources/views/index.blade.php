@@ -53,5 +53,18 @@
     </div>
 </div>
 
+  <script>
+      /*Para mostrar la contraseña*/
+      $(document).ready(function () {
+        $('#show-pass').click(function () {
+        if ($('#pass-2').attr('type') === 'text') {
+         $('#pass-2').attr('type', 'password');
+        } else {
+         $('#pass-2').attr('type', 'text');
+        }
+         });
+        });
+      </script>
+
 
 @include('layout.footer');

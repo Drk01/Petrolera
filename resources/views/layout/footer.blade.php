@@ -70,21 +70,7 @@
 
   <script src="{{public_path()}}/js/jquery-3.1.1.min.js"></script>
   <script src="{{public_path()}}/js/bootstrap.min.js"></script>
-
-
-  <script>
-      /*Para mostrar la contraseña*/
-      $(document).ready(function () {
-        $('#show-pass').click(function () {
-        if ($('#pass-2').attr('type') === 'text') {
-         $('#pass-2').attr('type', 'password');
-        } else {
-         $('#pass-2').attr('type', 'text');
-        }
-         });
-        });
-      </script>
-
+  
       <script>
 	  	function registro_exitoso(mensaje){
 			$(window).load(function(){
