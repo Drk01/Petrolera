@@ -25,7 +25,7 @@
                             <div class="row">
                                 <div class="form-group col cabecera-contenido">
                                     <input type="text" class="form-control cabecera-contenido" placeholder="Usuario"
-                                        name="usuario" autofocus autocomplete="off" />
+                                        name="user" autofocus autocomplete="off" />
                                 </div>
                             </div>
 
