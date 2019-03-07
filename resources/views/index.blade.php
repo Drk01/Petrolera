@@ -19,7 +19,7 @@
                         <div class="text-center"><img src="img/Logo_APISAL.jpg" id="logo_comercializacion"
                                 alt=""></div>
                         <br><!-- Form login -->
-                        <form action="entrar" method="post">
+                        <form action="login" method="post">
                             @csrf
                             @method("POST")
                             <div class="row">
