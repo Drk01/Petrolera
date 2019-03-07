@@ -1,0 +1,246 @@
+@charset "utf-8";
+/* CSS Document */
+
+#cabecera-card{
+	background-color:#333;
+	color:#FFFFFF;
+	}
+
+.boton_negro{
+	background-color:#000000;
+	color:#FFFFFF;
+	}
+.boton_negro:hover{
+	background:#3F3A3A;
+	cursor:pointer}
+
+.btn-primary,
+.btn-default{
+	cursor:pointer}
+	/* Small devices (landscape phones, 576px and up)*/
+	@media (max-width: 575px) {
+	  #login{
+			padding-top: 30%;
+			padding-bottom: 10%;
+		}
+		#cabecera-card{
+			font-size: 20px;
+		}
+		.cabecera-contenido{
+			font-size: 14px;
+		}
+		#logo_comercializacion{
+			width: 50%;
+		}
+		#btn_login{
+			font-size: 14px;
+		}
+		/*Encuesta*/
+		#logo_comercializacion2{
+			width: 60%;
+		}
+		#logo_SCT{
+			width: 100%;
+		}
+		.letra_titulo_encuesta{
+			/*ancho del dispositivo*/
+			font-size: 1vw;
+		}
+		.letra_encuesta{
+			font-size: 0.8vw;
+		}
+		.letra_formato{
+			font-size: 0.6vw;
+		}
+		/*Al armar la encuesta*/
+		.espacio_botonE{
+			margin-top:10px;
+		}
+	}
+
+	/* Medium devices (tablets, 768px and up) */
+	@media (min-width: 576px) and (max-width: 767px) {
+		#login{
+			padding-top: 20%;
+			padding-bottom: 10%;
+		}
+		#cabecera-card{
+			font-size: 22px;
+		}
+		.cabecera-contenido{
+			font-size: 16px;
+		}
+		#logo_comercializacion{
+			width: 50%;
+		}
+		#btn_login{
+			font-size: 16px;
+		}
+		/*Encuesta*/
+		#logo_comercializacion2{
+			width: 60%;
+		}
+		#logo_SCT{
+			width: 100%;
+		}
+		.letra_titulo_encuesta{
+			/*ancho del dispositivo*/
+			font-size: 1vw;
+		}
+		.letra_encuesta{
+			font-size: 0.8vw;
+		}
+		.letra_formato{
+			font-size: 0.6vw;
+		}
+		/*Al armar la encuesta*/
+		.espacio_botonE{
+			margin-top:10px;
+		}
+	}
+
+	/* Large devices (desktops, 992px and up) */
+	@media (min-width: 768px) and (max-width: 991px) {
+		#login{
+			padding-top: 20%;
+			padding-bottom: 5%;
+		}
+		#cabecera-card{
+			font-size: 22px;
+		}
+		.cabecera-contenido{
+			font-size: 16px;
+		}
+		#logo_comercializacion{
+			width: 50%;
+		}
+		#btn_login{
+			font-size: 16px;
+		}
+		/*Encuesta*/
+		#logo_comercializacion2{
+			width: 60%;
+		}
+		#logo_SCT{
+			width: 100%;
+		}
+		.letra_titulo_encuesta{
+			/*ancho del dispositivo*/
+			font-size: 1vw;
+		}
+		.letra_encuesta{
+			font-size: 0.8vw;
+		}
+		.letra_formato{
+			font-size: 0.6vw;
+		}
+		/*Al armar la encuesta*/
+		.espacio_botonE{
+			margin-top:10px;
+		}
+	}
+	@media (min-width: 992px) and (max-width: 1199px){
+		#login{
+			 padding-top: 15%;
+			 padding-bottom: 20%;
+		 }
+		 #cabecera-card{
+			 font-size: 22px;
+		 }
+		 .cabecera-contenido{
+			 font-size: 16px;
+		 }
+		 #logo_comercializacion{
+			 width: 50%;
+		 }
+		 #btn_login{
+			 font-size: 16px;
+		 }
+		 /*Encuesta*/
+		 #logo_comercializacion2{
+			 width: 60%;
+		 }
+		 #logo_SCT{
+			 width: 100%;
+		 }
+		 .letra_titulo_encuesta{
+			 /*ancho del dispositivo*/
+			 font-size: 1vw;
+		 }
+		 .letra_encuesta{
+			 font-size: 0.8vw;
+		 }
+		 .letra_formato{
+			 font-size: 0.6vw;
+		 }
+		}
+	 @media (min-width: 1200px) and (max-width: 1919px){
+		 #login{
+			 padding-top: 10%;
+			 padding-bottom: 10%;
+		 }
+		 #cabecera-card{
+			 font-size: 22px;
+		 }
+		 .cabecera-contenido{
+			 font-size: 16px;
+		 }
+		 #logo_comercializacion{
+			 width: 50%;
+		 }
+		 #btn_login{
+			 font-size: 16px;
+		 }
+		 /*Encuesta*/
+		 #logo_comercializacion2{
+			 width: 60%;
+		 }
+		 #logo_SCT{
+			 width: 100%;
+		 }
+		 .letra_titulo_encuesta{
+			 /*ancho del dispositivo*/
+			 font-size: 1vw;
+		 }
+		 .letra_encuesta{
+			 font-size: 0.8vw;
+		 }
+		 .letra_formato{
+			 font-size: 0.6vw;
+		 }
+	 }
+	@media (min-width: 1920px){
+		#login{
+			padding-top: 10%;
+			padding-bottom: 0px;
+		}
+		#cabecera-card{
+			font-size: 22px;
+		}
+		.cabecera-contenido{
+			font-size: 16px;
+		}
+		#logo_comercializacion{
+			width: 50%;
+		}
+		#btn_login{
+			font-size: 16px;
+		}
+		/*Encuesta*/
+		#logo_comercializacion2{
+			width: 60%;
+		}
+		#logo_SCT{
+			width: 100%;
+		}
+		.letra_titulo_encuesta{
+			/*ancho del dispositivo*/
+			font-size: 1vw;
+		}
+		.letra_encuesta{
+			font-size: 0.8vw;
+		}
+		.letra_formato{
+			font-size: 0.6vw;
+		}
+	}

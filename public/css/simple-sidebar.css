@@ -1,0 +1,102 @@
+@media (max-width: 349px) {
+
+  /*Tamaño de la letra del submenu*/
+  .sidebar .list-group > div a.list-group-item {
+      font-size:10px;
+  }
+
+
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 350px) and (max-width: 575px) {
+  /*Tamaño de la letra del submenu*/
+  .list-group > div a.list-group-item {
+      font-size:10px;
+  }
+
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 576px) and (max-width: 767px) {
+
+  /*Tamaño de la letra del submenu*/
+  .sidebar .list-group > div a.list-group-item {
+      font-size:14px;
+      padding-left:22px;
+  }
+
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 768px) and (max-width: 991px) {
+  /*Tamaño de la letra del submenu*/
+  .sidebar .list-group > div a.list-group-item {
+      font-size:14px;
+      padding-left:22px;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 992px) and (max-width: 1199px){
+  /*Tamaño de la letra del submenu*/
+  .sidebar .list-group > div a.list-group-item {
+      font-size:14px;
+      padding-left:22px;
+  }
+ }
+ @media (min-width: 1200px) and (max-width: 1919px){
+   /*Tamaño de la letra del submenu*/
+   .sidebar .list-group > div a.list-group-item {
+       font-size:14px;
+       padding-left:22px;
+   }
+}
+@media (min-width: 1920px){
+  /*Tamaño de la letra del submenu*/
+  .sidebar .list-group > div a.list-group-item {
+      font-size:14px;
+      padding-left:22px;
+  }
+}
+
+.list-group-item[data-toggle]:after {
+    font-family:'FontAwesome';
+    content: "\f0d7";
+    margin-left: 5px;
+}
+
+.list-group > .list-group-item:not(.collapsed):after {
+    font-family:'FontAwesome';
+    content: "\f0d8";
+    margin-left: 5px;
+}
+/*no hace nada*/
+ .list-group-submenu .list-group-item {
+     background-color:red;
+     padding-left:30px;
+ }
+
+/*Tamaño a la vertical*/
+ .sidebar .list-group  {
+     background-color: #333;
+     min-height: 100vh;
+ }
+ /*Pinta todo el menu*/
+ .sidebar .list-group-item {
+     border-radius: 0;
+     color: #ccc;
+     background-color: #333;
+     color:white;
+   }
+   /*Seleccion del menu */
+.list-group .list-group-item:focus{
+  background-color: black;
+  color: white;
+}
+/*Distancia de elemento*/
+.sidebar i {
+    margin-right: 6px;
+}

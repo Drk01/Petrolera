@@ -1,0 +1,182 @@
+
+@media (max-width: 349px) {
+  /*MENU DEL SITEMA DE ENCUESTAS*/
+  .espacio_contenido_encuesta{
+    padding-top:80px;
+  }
+  /*Titulo del contenido*/
+  .titulo_contenido h2{
+      margin-top: 25px;
+      font-size:15px;
+  }
+  .espacio_titulo{
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .espacio_boton_objeto{
+    padding-top: 10px;
+  }
+  .espacio_multiselect{
+    padding-top: 10px;
+  }
+
+
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 350px) and (max-width: 575px) {
+  /*MENU DEL SITEMA DE ENCUESTAS*/
+  .espacio_contenido_encuesta{
+    padding-top:80px;
+  }
+  /*Titulo del contenido*/
+  .titulo_contenido h2{
+      margin-top: 25px;
+      font-size:20px;
+  }
+  .espacio_titulo{
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .espacio_boton_objeto{
+    padding-top: 10px;
+  }
+  .espacio_multiselect{
+    padding-top: 10px;
+  }
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 576px) and (max-width: 767px) {
+
+  /*MENU DEL SITEMA DE ENCUESTAS*/
+  .espacio_contenido_encuesta{
+    padding-top:80px;
+  }
+  /*Titulo del contenido*/
+  .titulo_contenido h2{
+      margin-top: 25px;
+      font-size:30px;
+  }
+  .espacio_titulo{
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .espacio_boton_objeto{
+    padding-top: 10px;
+  }
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 768px) and (max-width: 991px) {
+  /*MENU DEL SITEMA DE ENCUESTAS*/
+  .espacio_contenido_encuesta{
+    padding-top:80px;
+  }
+  /*Titulo del contenido*/
+  .titulo_contenido h2{
+      margin-top: 25px;
+      font-size:35px;
+  }
+  .espacio_titulo{
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 992px) and (max-width: 1199px){
+     /*MENU DEL SITEMA DE ENCUESTAS*/
+    .espacio_contenido_encuesta{
+      padding-top:90px;
+    }
+    /*Titulo del contenido*/
+    .titulo_contenido h2{
+        margin-top: 25px;
+        font-size:40px;
+    }
+    .espacio_titulo{
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+ }
+ @media (min-width: 1200px) and (max-width: 1919px){
+    /*MENU DEL SITEMA DE ENCUESTAS*/
+    .espacio_contenido_encuesta{
+      padding-top:90px;
+    }
+    /*Titulo del contenido*/
+    .titulo_contenido h2{
+        margin-top: 25px;
+        font-size:40px;
+    }
+    .espacio_titulo{
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+}
+@media (min-width: 1920px){
+    /*MENU DEL SITEMA DE ENCUESTAS*/
+    .espacio_contenido_encuesta{
+      padding-top:90px;
+    }
+    /*Titulo del contenido*/
+    .titulo_contenido h2{
+        margin-top: 25px;
+        font-size:40px;
+    }
+    .espacio_titulo{
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
+
+}
+.popover-title {
+    color: white;
+    background: #333;
+
+    font-size: 15px;
+}
+/*Popover de modificar estado del empleado*/
+.popover_empleado, .popover-content {
+    text-align: center;
+}
+
+
+/*Color del menu al crecer contenido*/
+.colormenu_encuesta{
+  background:#333;
+  /*padding-lef:0;*/
+}
+.menu_usuario{
+  padding-top:25px;
+  color:white;
+}
+
+.letra_blanca{
+  color: white;
+}
+/*estado*/
+.estado, a{
+  color:black;
+}
+.estado, a:hover{
+  color:black;
+}
+.estado, a:link{
+  text-decoration:none; 
+}
+/* COLOR MENU*/
+.well{
+  background-color:rgb(255,255,255);
+  color: rgb(0,0,0);
+  border: 1px solid #000000;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+  box-shadow: 0px 0px 5px rgb(112,112,112);
+}
