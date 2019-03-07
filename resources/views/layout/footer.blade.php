@@ -72,16 +72,6 @@
   <script src="{{public_path()}}/js/bootstrap.min.js"></script>
   
       <script>
-	  	function registro_exitoso(mensaje){
-			$(window).load(function(){
-				$(mensaje).modal("show");
-			});
-			setTimeout(function(){
-				$(mensaje).modal("hide");
-			},2500);
-		}
-      </script>
-      <script>
       $('#myModal').on('shown.bs.modal', function () {
         $('#myInput').focus()
       })
