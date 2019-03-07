@@ -19,7 +19,7 @@
                         <div class="text-center"><img src="img/Logo_APISAL.jpg" id="logo_comercializacion"
                                 alt=""></div>
                         <br><!-- Form login -->
-                        <form action="login" method="post">
+                        <form action="{{ route('login') }}" method="post">
                             @csrf
                             @method("POST")
                             <div class="row">
@@ -54,7 +54,6 @@
 </div>
 
   <script>
-      /*Para mostrar la contraseña*/
       $(document).ready(function () {
         $('#show-pass').click(function () {
         if ($('#pass-2').attr('type') === 'text') {
