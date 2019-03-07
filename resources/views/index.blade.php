@@ -16,8 +16,12 @@
                 <h3 class="card-header special-color-dark text-center" id="cabecera-card">Iniciar Sesión</h3>
                 <div class="card-body">
                     <div class="card-block">
-                        <div class="text-center"><img src="img/Logo_APISAL.jpg" id="logo_comercializacion"
-                                alt=""></div>
+                        @if (session()->has('flash'))
+                        <div class="alert alert-danger">
+                            {{ session('flash') }}
+                        </div>
+                        @endif
+                        <div class="text-center"><img src="img/Logo_APISAL.jpg" id="logo_comercializacion" alt=""></div>
                         <br><!-- Form login -->
                         <form action="{{ route('login') }}" method="post">
                             @csrf
@@ -25,7 +29,8 @@
                             <div class="row">
                                 <div class="form-group col cabecera-contenido">
                                     <input type="text" class="form-control cabecera-contenido" placeholder="Usuario"
-                                        name="user" autofocus autocomplete="off" />
+                                        value="{{ old('user') }}" name="user" autofocus autocomplete="off" />
+                                    {!! $errors->first('user','<span class="help-block">:message</span>') !!}
                                 </div>
                             </div>
 
@@ -33,6 +38,8 @@
                                 <div class="input-group col ">
                                     <input id="pass-2" type="password" placeholder="Contraseña" name="password" class="form-control cabecera-contenido"
                                         autocomplete="off" />
+
+
                                     <span class="input-group-btn show-password">
                                         <button class="btn btn-default" type="button" id="show-pass">
                                             <div class="fa fa-eye prefix grey-text"></div>
@@ -40,6 +47,7 @@
                                     </span>
                                 </div>
                             </div>
+                            {!! $errors->first('password','<span class="help-block">:message</span>') !!}
                             <p>
                                 <div class="text-center">
                                     <input type="submit" class="btn boton_negro" name="login" id="btn_login" value="Iniciar">
@@ -53,17 +61,18 @@
     </div>
 </div>
 
-  <script>
-      $(document).ready(function () {
+<script>
+    $(document).ready(function () {
         $('#show-pass').click(function () {
-        if ($('#pass-2').attr('type') === 'text') {
-         $('#pass-2').attr('type', 'password');
-        } else {
-         $('#pass-2').attr('type', 'text');
-        }
-         });
+            if ($('#pass-2').attr('type') === 'text') {
+                $('#pass-2').attr('type', 'password');
+            } else {
+                $('#pass-2').attr('type', 'text');
+            }
         });
-      </script>
+    });
+
+</script>
 
 
 @include('layout.footer');

@@ -11,4 +11,22 @@
 |
 */
 
-Route::view('/', 'index');
+/**
+ * Index
+ */
+Route::get('/', 'Auth\LoginController@showLoginForm')->middleware('guest');
+
+/**
+ * Login form
+ */
+ Route::post("/login", "Auth\LoginController@login")->name('login');
+
+ /**
+  * Dashboard
+  */
+  Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+  /**
+   * Logout
+   */
+  Route::post('/logout','Auth\LoginController@logout')->name('logout');

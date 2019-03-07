@@ -70,7 +70,7 @@
 
   <script src="{{public_path()}}/js/jquery-3.1.1.min.js"></script>
   <script src="{{public_path()}}/js/bootstrap.min.js"></script>
-  
+
       <script>
       $('#myModal').on('shown.bs.modal', function () {
         $('#myInput').focus()
