@@ -1,4 +1,4 @@
-<footer>
+</div><footer>
 <div style="border: 10px solid #272829;"></div>
 <div class="container-fluid color4">
   <div class="container">
@@ -76,6 +76,23 @@
         $('#myInput').focus()
       })
       </script>
-
+  <script src="../css/Bootstrap4/js/jquery-3.1.1.min.js"></script>
+  <script src="js/tether.min.js"></script>
+  <script src="../css/Bootstrap4/js/bootstrap.min.js"></script>
+  <script src="js/bootstrap-multiselect.js"></script>
+  <script src="js/jquery.dataTables.min.js"></script>
+  <script src="js/dataTables.bootstrap4.min.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/funciones_PS.js"></script>
+  <script src="js/popover_script.js"></script>
+  <script src="js/toggle_script.js"></script>
+  <script src="js/bootstrap-toggle.min.js"></script>
+  <script type="text/javascript" src="js/jquery.validate.js"></script>
+  <script type="text/javascript" src="js/teclado.js"></script>
+  <script type="text/javascript" src="js/valida_formularios.js"></script>
+  <script src="js/validar_encuesta.js"></script>
+  <script src="calendario/jquery-ui.js"></script>
+  <script src="js/envio_encuestas.js"></script>
+  <script src="js/jquery.aCollapTable.js"></script>
 </body>
 </html>
