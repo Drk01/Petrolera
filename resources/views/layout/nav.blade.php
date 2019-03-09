@@ -9,7 +9,7 @@
         </div>
         <div class="sidebar">
           <div class="list-group border-0 text-center text-md-left">
-            <a href="home" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-home fa-2x"></i><span class="d-none d-md-inline nav_encuesta">Inicio</span></a>
+            <a href="{{ route('dashboard') }}" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-home fa-2x"></i><span class="d-none d-md-inline nav_encuesta">Inicio</span></a>
             <a href="#menu1" class="list-group-item d-inline-block collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-users fa-lg"></i> <span class="d-none d-md-inline nav_encuesta">Clientes</span> </a>
             <div class="collapse" id="menu1">
                 <a href="objetos" class="list-group-item" data-parent="#menu1">Objetos</a>
