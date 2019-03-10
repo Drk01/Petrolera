@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateStorageTypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,10 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('storage_type', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->unique();
-            $table->string('lastname', 100);
-            $table->string('motherLastname', 100);
-            $table->string('user', 100)->nullable();
-            $table->string('email');
-            $table->string('password');
-            $table->string('status', 100)->default('Active');
+            $table->bigInteger('storage_id')->unsigned();
+            $table->bigInteger('type_id')->unsigned();
             $table->timestamps();
 
             $table->engine = 'InnoDB';
@@ -35,6 +30,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('storage_type');
     }
 }
