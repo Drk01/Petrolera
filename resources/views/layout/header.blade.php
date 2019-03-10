@@ -15,8 +15,6 @@
     <link href="css/simple-sidebar.css" rel="stylesheet">
     <link href="css/estilo_formularios.css" rel="stylesheet">
     <link href="css/contenido.css" rel="stylesheet">
-
-
   </head>
   <body>
     <header>
