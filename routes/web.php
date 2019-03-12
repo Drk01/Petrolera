@@ -30,3 +30,8 @@ Route::get('/', 'Auth\LoginController@showLoginForm')->middleware('guest');
    * Logout
    */
   Route::post('/logout','Auth\LoginController@logout')->name('logout');
+
+  /**
+   * Storage
+   */
+  Route::resource('/almacen','AlmacenController');
