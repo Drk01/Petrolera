@@ -1,4 +1,4 @@
-@include('layout.header');
+@include('layout.header')
 
 <div class="container" id="login">
     <div class="row">
@@ -75,4 +75,4 @@
 </script>
 
 
-@include('layout.footer');
+@include('layout.footer')

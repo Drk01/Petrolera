@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-2 pl-0 pr-0 colormenu_encuesta">
             <div class="hidden-sm-down colormenu_encuesta">
-                <center><img src="img/logo_sin_fondo.png" id="logo3" /></center>
+                <center><img src="{{ asset('img/logo_sin_fondo.png') }}" id="logo3" /></center>
                 <div class="card-block" style="padding-top:0px;border-top:0px;margin-top:0px;">
                     <center>
                         <h4 class="card-title letra_blanca"><i class="fa fa-user-circle-o menu_usuario" aria-hidden="true"></i>
@@ -19,7 +19,7 @@
                     </a>
                     <div class="collapse" id="menu1">
                         <a href="empresa" class="list-group-item" data-parent="#menu1">Listado productos</a>
-                        <a href="objetos" class="list-group-item" data-parent="#menu1">Añadir producto</a>
+                        <a href="{{ route('almacen.create') }}" class="list-group-item" data-parent="#menu1">Añadir producto</a>
 
                     </div>
                     <a href="#menu2" class="list-group-item d-inline-block collapsed" data-toggle="collapse"
