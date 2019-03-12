@@ -177,6 +177,12 @@ return [
         'time'                  => 'hora',
         'subject'               => 'asunto',
         'message'               => 'mensaje',
+
+        /* Custom fields translate */
+
+        'productName '=> 'nombre del producto',
+        'quantityItems' => 'cantidad de artículos',
+        'types' => 'precauciones'
     ],
 ];
 
