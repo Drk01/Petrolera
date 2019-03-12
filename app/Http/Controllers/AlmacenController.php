@@ -20,7 +20,9 @@ class AlmacenController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { }
+    {
+        return redirect(route('dashboard'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -67,7 +69,7 @@ class AlmacenController extends Controller
                 'updated_at' => now()
             ]);
         }
-        
+
         return redirect(route('almacen.create'));
     }
 
