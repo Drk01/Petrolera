@@ -18,7 +18,7 @@
                         data-parent="#sidebar" aria-expanded="false"><i class="fa fa-clipboard fa-lg"></i> <span class="d-none d-md-inline nav_encuesta">Almacén</span>
                     </a>
                     <div class="collapse" id="menu1">
-                        <a href="empresa" class="list-group-item" data-parent="#menu1">Listado productos</a>
+                        <a href="{{ route('almacen.index') }}" class="list-group-item" data-parent="#menu1">Listado productos</a>
                         <a href="{{ route('almacen.create') }}" class="list-group-item" data-parent="#menu1">Añadir producto</a>
 
                     </div>

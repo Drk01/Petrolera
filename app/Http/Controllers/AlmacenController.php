@@ -20,7 +20,10 @@ class AlmacenController extends Controller
      */
     public function index()
     {
-        return redirect(route('dashboard'));
+        return view('almacen.All')->with([
+            'user'=>Auth::user()->user,
+            'storage' => DB::table('storage')->select(['*'])->get()
+        ]);
     }
 
     /**
