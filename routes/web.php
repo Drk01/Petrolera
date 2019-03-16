@@ -35,3 +35,9 @@ Route::get('/', 'Auth\LoginController@showLoginForm')->middleware('guest');
    * Storage
    */
   Route::resource('/almacen','AlmacenController');
+
+/**
+ * Usuarios
+ */
+
+ Route::resource('/usuarios','UsuarioController');

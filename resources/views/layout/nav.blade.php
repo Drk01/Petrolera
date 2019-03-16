@@ -34,8 +34,8 @@
                         data-parent="#sidebar" aria-expanded="false"><i class="fa fa-users fa-lg"></i><span class="d-none d-md-inline nav_encuesta">Usuarios</span>
                     </a>
                     <div class="collapse" id="menu3">
-                        <a href="secciones" class="list-group-item" data-parent="#menu3">Listado de usuarios</a>
-                        <a href="preguntas" class="list-group-item" data-parent="#menu3">Listado de préstamos</a>
+                        <a href="{{ route('usuarios.index') }}" class="list-group-item" data-parent="#menu3">Listado de usuarios</a>
+
                     </div>
                     {{-- <a href="enviar" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i
                             class="fa fa-paper-plane fa-lg"></i><span class="d-none d-md-inline nav_encuesta">Envíar
