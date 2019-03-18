@@ -15,8 +15,6 @@ class CreateLoansTable extends Migration
     {
         Schema::create('loans', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('quantityItemsOnLoan')->unsigned()->nullable();
-            $table->string('status', 100);
             $table->bigInteger('storage_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
             $table->timestamps();

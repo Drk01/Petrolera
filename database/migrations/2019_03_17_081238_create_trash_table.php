@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStorageTypeTable extends Migration
+class CreateTrashTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateStorageTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('storage_type', function (Blueprint $table) {
+        Schema::create('trash', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('storage_id')->unsigned();
-            $table->bigInteger('driveType_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('storage_id')->references('id')->on('storage')->onDelete('cascade')->onUpdate('cascade');
 
             $table->engine = 'InnoDB';
         });
@@ -30,6 +31,6 @@ class CreateStorageTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('storage_type');
+        Schema::dropIfExists('trash');
     }
 }

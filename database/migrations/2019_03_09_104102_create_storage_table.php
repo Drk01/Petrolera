@@ -15,11 +15,10 @@ class CreateStorageTable extends Migration
     {
         Schema::create('storage', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('partNumber')->nullable();
             $table->string('productName', 100);
             $table->longText('description');
-            $table->integer('quantityItems')->unsigned();
             $table->timestamps();
-
             $table->engine = 'InnoDB';
         });
     }

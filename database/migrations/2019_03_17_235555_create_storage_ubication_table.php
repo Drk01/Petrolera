@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStorageTypeTable extends Migration
+class CreateStorageUbicationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateStorageTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('storage_type', function (Blueprint $table) {
+        Schema::create('ubication', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('storage_id')->unsigned();
-            $table->bigInteger('driveType_id')->unsigned();
-            $table->timestamps();
+            $table->string('name');
+            $table->longText('description');
 
             $table->engine = 'InnoDB';
+            $table->timestamps();
         });
     }
 
@@ -30,6 +30,6 @@ class CreateStorageTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('storage_type');
+        Schema::dropIfExists('ubication');
     }
 }

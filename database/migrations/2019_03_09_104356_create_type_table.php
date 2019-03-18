@@ -13,7 +13,7 @@ class CreateTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('type', function (Blueprint $table) {
+        Schema::create('driveType', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 100);
             $table->longText('description');

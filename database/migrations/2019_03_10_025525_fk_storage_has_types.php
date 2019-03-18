@@ -15,7 +15,7 @@ class FkStorageHasTypes extends Migration
     {
         Schema::table('storage_type', function (Blueprint $table) {
             $table->foreign('storage_id')->references('id')->on('storage')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('type_id')->references('id')->on('type')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('driveType_id')->references('id')->on('driveType')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

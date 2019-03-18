@@ -12,7 +12,7 @@ class StorageTypeSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('type')->insert([
+        DB::table('driveType')->insert([
             'id' => '1',
             'name' => 'Especial',
             'description' => 'Materiales que requieren cierto tipo de cuidado para manipularlos.',
@@ -20,7 +20,7 @@ class StorageTypeSeeder extends Seeder
             'updated_at' => now()
         ]);
 
-        DB::table('type')->insert([
+        DB::table('driveType')->insert([
             'id' => '2',
             'name' => 'Peligroso',
             'description' => 'Materiales que requieren un manejo especial debido a su nivel de peligrosidad',
