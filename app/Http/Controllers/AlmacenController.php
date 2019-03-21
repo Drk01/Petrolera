@@ -34,7 +34,7 @@ class AlmacenController extends Controller
     public function create()
     {
         $types = DB::table('type')->get();
-        return view('almacen.create')->with(['user' => Auth::user()->user, 'types' => $types]);
+        return view('almacen.create')->with(['types' => $types]);
     }
 
     /**
