@@ -182,7 +182,8 @@ return [
 
         'productName '=> 'nombre del producto',
         'quantityItems' => 'cantidad de artículos',
-        'types' => 'precauciones'
+        'types' => 'precauciones',
+        'userType' => 'Tipo de usuario'
     ],
 ];
 
