@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class RedirectIfAuthenticated
 {
@@ -18,9 +19,17 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/dashboard');
+            $UserID = Auth()->user()->id;
+            $roles_id = DB::table('users_roles')->select(['roles_id'])
+                ->where('users_id','=',$UserID)
+                ->where('roles_id','!=','3')->first();
+                
+            if( $roles_id){
+                return redirect('/dashboard');
+            }
+            session()->flush();
+            return redirect()->back()->with(['flash' => trans('auth.void')]);
         }
-
         return $next($request);
     }
 }
