@@ -32,6 +32,11 @@ Route::get('/', 'Auth\LoginController@showLoginForm')->middleware('guest');
   Route::post('/logout','Auth\LoginController@logout')->name('logout');
 
   /**
+   * Workspaces
+   */
+  Route::resource('/workspaces','WorkspacesController');
+
+  /**
    * Storage
    */
   Route::resource('/almacen','AlmacenController');
@@ -39,5 +44,4 @@ Route::get('/', 'Auth\LoginController@showLoginForm')->middleware('guest');
 /**
  * Usuarios
  */
-
  Route::resource('/usuarios','UsuarioController');
