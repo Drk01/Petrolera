@@ -88,12 +88,6 @@
     </div>
 </footer>
 
-<script>
-    $('#myModal').on('shown.bs.modal', function () {
-        $('#myInput').focus()
-    })
-
-</script>
 <script src="{{ asset('css/Bootstrap4/js/jquery-3.1.1.min.js') }}"></script>
 <script src="{{ asset('js/tether.min.js') }}"></script>
 <script src="{{ asset('css/Bootstrap4/js/bootstrap.min.js') }}"></script>
