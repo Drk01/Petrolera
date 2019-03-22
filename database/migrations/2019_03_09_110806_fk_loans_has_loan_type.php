@@ -13,9 +13,9 @@ class FkLoansHasLoanType extends Migration
      */
     public function up()
     {
-        Schema::table('loans_loantypes', function (Blueprint $table) {
+        Schema::table('loans_loanTypes', function (Blueprint $table) {
             $table->foreign('loan_id')->references('id')->on('loans')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('loanType_id')->references('id')->on('loantype')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('loanType_id')->references('id')->on('loanType')->onDelete('cascade')->onUpdate('cascade');
 
             $table->engine = 'InnoDB';
         });
