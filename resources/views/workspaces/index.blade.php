@@ -5,7 +5,7 @@ Areas de trabajo
 @include('layout.header')
 
 <center>
-    <div class="btn-group" role="group" aria-label="Basic example" @if ($IsAdmin) disabled hidden @endif>
+    <div class="btn-group" role="group" aria-label="Basic example" @if (!$IsAdmin) disabled hidden @endif>
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"
             data-whatever="@fat">Crear nueva</button>
     </div>
@@ -29,10 +29,10 @@ Areas de trabajo
             <form action="{{ route('workspaces.destroy',$Workarea->id) }}" method="post">
                 @csrf
                 @method('DELETE')
-            <td><button @if ($IsAdmin) disabled @endif
+            <td><button @if (!$IsAdmin) disabled @endif
                     onclick="window.location.href='/workspaces/{{ $Workarea->id }}/edit'" type="button"
                     class="btn btn-info btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true">Editar</i></button>
-                <button @if ($IsAdmin) disabled @endif type="submit" class="btn btn-danger btn-sm"><i
+                <button @if (!$IsAdmin) disabled @endif type="submit" class="btn btn-danger btn-sm"><i
                         class="fa fa-trash" aria-hidden="true">Eliminar</i></button></td>
                     </form>
         </tr>
