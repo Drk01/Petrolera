@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
             'lastname' => 'admin',
             'motherLastname' => 'admin',
             'user'=> 'admin',
-            'email' => 'admin',
+            'email' => 'admin@admin.com',
             'password' => bcrypt('admin'),
             'created_at' => now(),
             'updated_at' => now()
