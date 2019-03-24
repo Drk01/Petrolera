@@ -11,7 +11,7 @@ class UsuarioController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('isAdmin')->except('index','show');
+        $this->middleware('isAdmin')->except('index', 'show');
     }
     /**
      * Display a listing of the resource.
@@ -21,7 +21,7 @@ class UsuarioController extends Controller
     public function index()
     {
         $Usuarios = DB::table('users')->get();
-        $Usuarios_Roles= DB::table('users_roles')->get();
+        $Usuarios_Roles = DB::table('users_roles')->get();
         $Roles = DB::table('role')->get();
 
         return view('usuarios.index')->with([
@@ -42,7 +42,8 @@ class UsuarioController extends Controller
         $Workareas = DB::table('workarea')->get();
         return view('usuarios.create')->with([
             'Roles' => $Roles,
-            'Workareas' => $Workareas
+            'Workareas' => $Workareas,
+            'Accion' => 'Crear'
         ]);
     }
 
@@ -54,7 +55,7 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        $Validar = $this->validate($request,[
+        $Validar = $this->validate($request, [
             'name' => 'string|required',
             'lastname' => 'string|required',
             'motherLastname' => 'string|required',
@@ -100,20 +101,23 @@ class UsuarioController extends Controller
      */
     public function show($id)
     {
-        session()->forget(['UserData','Role']);
-
-        $UserData = DB::table('users')->select(['*'])->where('id','=',$id)->first();
-        $UserRole = DB::table('users_roles')->select(['roles_id'])->where('users_id','=',$UserData->id)->first();
-        $Role = DB::table('role')->select(['name'])->where('id','=',$UserRole->roles_id)->first();
+        $UserData = DB::table('users')->select(['*'])->where('id', '=', $id)
+            ->first();
+        $UserRole = DB::table('users_roles')->select(['roles_id'])
+            ->where('users_id', '=', $UserData->id)->first();
+        $Role = DB::table('role')->select(['name'])->where('id', '=', $UserRole->roles_id)
+            ->first();
         $Puesto = DB::table('user_workarea')->select(['*'])
-                    ->where('user_id','=',$UserData->id)->first()->workarea_id;
-        dd($Puesto);
+            ->where('user_id', '=', $UserData->id)->first()->workarea_id;
+        $Workarea = DB::table('workarea')->select(['*'])
+            ->where('id', '=', $Puesto)->first()->name;
 
-        return redirect()->back()->with([
+        return view('usuarios.create')->with([
             'UserData' => $UserData,
             'Role' => $Role->name,
-            'Puesto' => $Puesto
-            ]);
+            'Puesto' => $Workarea,
+            'Accion' => 'Ver'
+        ]);
     }
 
     /**
@@ -124,7 +128,26 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-        //
+        $UserData = DB::table('users')->select(['*'])->where('id', '=', $id)
+            ->first();
+        $UserRole = DB::table('users_roles')->select(['roles_id'])->where('users_id', '=', $UserData->id)
+            ->first();
+        $Roles = DB::table('role')->select(['*'])->get();
+        $Role = DB::table('role')->select(['name'])->where('id', '=', $UserRole->roles_id)
+            ->first();
+        $Puesto = DB::table('user_workarea')->select(['*'])
+            ->where('user_id', '=', $UserData->id)->first()->workarea_id;
+        $Workareas = DB::table('workarea')->select(['*'])
+            ->get();
+
+        return view('usuarios.create')->with([
+            'UserData' => $UserData,
+            'Role' => $Role->name,
+            'Roles' => $Roles,
+            'Puesto' => $Workareas->where('id', '=', $Puesto)->first()->name,
+            'Workareas' => $Workareas,
+            'Accion' => 'Editar'
+        ]);
     }
 
     /**
@@ -136,7 +159,29 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('users')
+        ->where('id','=',$id)
+        ->update([
+            'name' => $request->name,
+            'lastname' => $request->lastname,
+            'motherLastname' => $request->motherLastname,
+            'email' => $request->email,
+            'user' => $request->user
+        ]);
+
+        DB::table('user_workarea')
+        ->where('user_id','=',$id)
+        ->update([
+            'workarea_id' => $request->Workarea
+        ]);
+
+        DB::table('users_roles')
+        ->where('users_id')
+        ->update([
+            'roles_id' => $request->userType
+        ]);
+
+        return redirect(route('usuarios.index'));
     }
 
     /**
@@ -147,7 +192,7 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('users')->where('id','=',$id)->delete();
+        DB::table('users')->where('id', '=', $id)->delete();
         return redirect()->back();
     }
 }
