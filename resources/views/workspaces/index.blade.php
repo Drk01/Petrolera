@@ -21,8 +21,6 @@ Areas de trabajo
     </thead>
     <tbody>
         @foreach ($Workspaces as $key => $Workarea)
-            @csrf
-            @method('DELETE')
         <tr>
             <td>{{ $Workarea->name }}</td>
             <td>{{ $Workspaces[$key]->Trabajadores }}</td>
