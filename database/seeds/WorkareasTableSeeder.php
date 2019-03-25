@@ -19,5 +19,13 @@ class WorkareasTableSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
+        DB::table('user_workarea')->insert([
+            'id' => 1,
+            'user_id' => 1,
+            'workarea_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
     }
 }
