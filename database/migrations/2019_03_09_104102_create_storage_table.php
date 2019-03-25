@@ -15,7 +15,7 @@ class CreateStorageTable extends Migration
     {
         Schema::create('storage', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('partNumber')->nullable();
+            $table->bigInteger('partNumber')->unique();
             $table->string('productName', 100);
             $table->longText('description');
             $table->timestamps();
