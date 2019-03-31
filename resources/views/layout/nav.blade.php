@@ -26,6 +26,7 @@
                             producto</a>
                         <a href="{{ route('almacen.index') }}" class="list-group-item" data-parent="#menu1">Listado
                             productos</a>
+                            <a href="{{ route('marcas.index') }}" class="list-group-item" data-parent="#menu1">Marcas</a>
 
 
                     </div>
