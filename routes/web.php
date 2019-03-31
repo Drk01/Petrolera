@@ -60,3 +60,8 @@ Route::get('/', 'Auth\LoginController@showLoginForm')->middleware('guest');
    * DriveType
    */
   Route::resource('/categorias', 'DriveTypesController');
+
+  /**
+   * Enviroment
+   */
+  Route::resource('/ambientales', 'EnviromentController');

@@ -31,6 +31,8 @@
                             data-parent="#menu1">Ubicaciones</a>
                         <a href="{{ route('categorias.index') }}" class="list-group-item"
                             data-parent="#menu1">Categorias</a>
+                            <a href="{{ route('ambientales.index') }}" class="list-group-item"
+                            data-parent="#menu1">Precauciones ambientales</a>
                     </div>
                     <a href="#menu2" class="list-group-item d-inline-block collapsed" data-toggle="collapse"
                         data-parent="#sidebar" aria-expanded="false"><i class="fa fa-clipboard fa-lg"></i><span
