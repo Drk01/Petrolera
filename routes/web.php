@@ -45,3 +45,9 @@ Route::get('/', 'Auth\LoginController@showLoginForm')->middleware('guest');
  * Usuarios
  */
  Route::resource('/usuarios','UsuarioController');
+
+ /**
+  * Marcas
+  */
+
+  Route::resource('/marcas', 'TrademarksController');
