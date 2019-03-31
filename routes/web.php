@@ -55,3 +55,8 @@ Route::get('/', 'Auth\LoginController@showLoginForm')->middleware('guest');
    * Ubications
    */
   Route::resource('/ubicaciones', 'UbicationsController');
+
+  /**
+   * DriveType
+   */
+  Route::resource('/categorias', 'DriveTypesController');
