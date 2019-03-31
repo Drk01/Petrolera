@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class UbicationsController extends Controller
 {
@@ -13,7 +14,10 @@ class UbicationsController extends Controller
      */
     public function index()
     {
-        //
+        $Ubicaciones = DB::table('ubication')->get();
+        return view('ubicaciones.index')->with([
+            'Ubicaciones' => $Ubicaciones
+        ]);
     }
 
     /**
