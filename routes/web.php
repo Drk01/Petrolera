@@ -50,3 +50,8 @@ Route::get('/', 'Auth\LoginController@showLoginForm')->middleware('guest');
   * Marcas
   */
   Route::resource('/marcas', 'TrademarksController');
+
+  /**
+   * Ubications
+   */
+  Route::resource('/ubicaciones', 'UbicationsController');
