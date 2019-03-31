@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreUbicationRequest;
 use DB;
 
 class UbicationsController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+        $this->middleware('isAdmin')->except('index','show');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +21,7 @@ class UbicationsController extends Controller
     {
         $Ubicaciones = DB::table('ubication')->get();
         return view('ubicaciones.index')->with([
-            'Ubicaciones' => $Ubicaciones
+            'ubicaciones' => $Ubicaciones
         ]);
     }
 
@@ -27,7 +32,7 @@ class UbicationsController extends Controller
      */
     public function create()
     {
-        //
+        return view('ubicaciones.create')->with(['Accion'=>'Crear']);
     }
 
     /**
@@ -36,9 +41,16 @@ class UbicationsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUbicationRequest $request)
     {
-        //
+        DB::table('ubication')->insert([
+            'name' => trim($request->name),
+            'description' => trim($request->description),
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        return redirect(route('ubicaciones.index'));
     }
 
     /**
@@ -49,7 +61,12 @@ class UbicationsController extends Controller
      */
     public function show($id)
     {
-        //
+        $Ubicacion = DB::table('ubication')->where('id','=',$id)->first();
+
+        return view('ubicaciones.create')->with([
+            'ubicacion' => $Ubicacion,
+            'Accion' => 'Mostrar'
+        ]);
     }
 
     /**
@@ -60,7 +77,12 @@ class UbicationsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $Ubicacion = DB::table('ubication')->where('id','=',$id)->first();
+
+        return view('ubicaciones.create')->with([
+            'ubicacion' => $Ubicacion,
+            'Accion' => 'Editar'
+        ]);
     }
 
     /**
@@ -72,7 +94,17 @@ class UbicationsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $Validate = $request->validate([
+            'name' => 'required'
+        ]);
+
+        DB::table('ubication')->where('id','=',$id)->update([
+            'name' => trim($request->name),
+            'description' => trim($request->description),
+            'updated_at' => now()
+        ]);
+
+        return redirect(route('ubicaciones.index'));
     }
 
     /**
@@ -83,6 +115,12 @@ class UbicationsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Ubication = DB::table('storage_ubication')->where('ubication_id','=',$id)->count();
+        if($Ubication==0){
+            DB::table('ubication')->where('id','=',$id)->delete();
+            return redirect()->back();
+        }else{
+            return redirect()->back()->withErrors(['No puedes eliminar una ubicación que tenga productos dentro']);
+        }
     }
 }
