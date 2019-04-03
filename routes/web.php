@@ -27,6 +27,10 @@ Route::get('/', 'Auth\LoginController@showLoginForm')->middleware('guest');
   Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
   /**
+   * My account
+   */
+  Route::resource('/cuenta', 'AccountController');
+  /**
    * Logout
    */
   Route::post('/logout','Auth\LoginController@logout')->name('logout');
@@ -65,3 +69,8 @@ Route::get('/', 'Auth\LoginController@showLoginForm')->middleware('guest');
    * Enviroment
    */
   Route::resource('/ambientales', 'EnviromentController');
+
+  /**
+   * Units
+   */
+  Route::resource('/medidas', 'UnitsController');
