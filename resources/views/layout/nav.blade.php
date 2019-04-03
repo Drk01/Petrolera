@@ -22,8 +22,8 @@
                             class="d-none d-md-inline nav_encuesta">Almacén</span>
                     </a>
                     <div class="collapse" id="menu1">
-                        <a href="{{ route('almacen.create') }}" class="list-group-item" data-parent="#menu1">Añadir
-                            producto</a>
+{{--                         <a href="{{ route('almacen.create') }}" class="list-group-item" data-parent="#menu1">Añadir
+                            producto</a> --}}
                         <a href="{{ route('almacen.index') }}" class="list-group-item" data-parent="#menu1">Listado
                             productos</a>
                         <a href="{{ route('marcas.index') }}" class="list-group-item" data-parent="#menu1">Marcas</a>
@@ -33,15 +33,17 @@
                             data-parent="#menu1">Categorias</a>
                             <a href="{{ route('ambientales.index') }}" class="list-group-item"
                             data-parent="#menu1">Precauciones ambientales</a>
+                            <a href="{{ route('medidas.index') }}" class="list-group-item"
+                            data-parent="#menu1">Unidades de medida</a>
                     </div>
-                    <a href="#menu2" class="list-group-item d-inline-block collapsed" data-toggle="collapse"
+{{--                     <a href="#menu2" class="list-group-item d-inline-block collapsed" data-toggle="collapse"
                         data-parent="#sidebar" aria-expanded="false"><i class="fa fa-clipboard fa-lg"></i><span
                             class="d-none d-md-inline nav_encuesta">Préstamos</span>
                     </a>
                     <div class="collapse" id="menu2">
                         <a href="preguntas" class="list-group-item" data-parent="#menu2">Listado de préstamos</a>
                         <a href="secciones" class="list-group-item" data-parent="#menu2">Añadir préstamo</a>
-                    </div>
+                    </div> --}}
 
                     <a href="#menu3" class="list-group-item d-inline-block collapsed" data-toggle="collapse"
                         data-parent="#sidebar" aria-expanded="false"><i class="fa fa-users fa-lg"></i><span
@@ -65,13 +67,18 @@
                     <a href="configuracion" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i
                             class="fa fa-cogs fa-lg"></i> <span class="d-none d-md-inline nav_encuesta">Configuración</span></a>
                     --}}
-                    <form action="{{ route('logout') }}" method="post">
+                    <a href="{{ route('cuenta.index') }}" class="list-group-item d-inline-block collapsed"
+                    data-parent="#sidebar"><span
+                        class="d-none d-md-inline nav_encuesta"><i class="fa fa-user fa-lg" aria-hidden="true"></i>Mi cuenta</span></a>
+
+                <form action="{{ route('logout') }}" method="post" style="display:inline-block">
                         @csrf
                         <button data-parent="#sidebar" type="submit"
                             class=" list-group-item d-inline-block collapsed d-none d-md-inline nav_encuesta"><i
                                 class="fa fa-power-off fa-lg"></i>
                             Cerrar Sesión</button>
                     </form>
+
                 </div>
             </div>
         </div>
