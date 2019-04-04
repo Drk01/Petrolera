@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class AccountController extends Controller
 {
@@ -75,7 +76,33 @@ class AccountController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $Validate = $request->validate([
+            'name' => 'required',
+            'lastname' => 'required',
+            'motherLastname' => 'required',
+            'email' => 'required|email',
+            'user' => 'required'
+        ]);
+
+        if($request->pass != null){
+            DB::table('users')->where('id','=',$id)->update([
+                'name' => trim($request->name),
+                'lastname' => trim($request->lastname),
+                'motherLastname' => trim($request->motherLastname),
+                'user' => trim($request->user),
+                'email' => trim($request->email),
+                'password' => trim($request->pass)
+            ]);
+        }else{
+
+        DB::table('users')->where('id','=',$id)->update([
+            'name' => trim($request->name),
+            'lastname' => trim($request->lastname),
+            'motherLastname' => trim($request->motherLastname),
+            'email' => trim($request->email),
+            'user' => trim($request->user)
+        ]);}
+        return redirect(route('dashboard'));
     }
 
     /**
