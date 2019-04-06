@@ -111,8 +111,12 @@
 
     <script>
         $(document).ready(function () {
-            $('#userType').select2();
-            $('#Workarea').select2();
+            $('#userType').select2({
+                theme: 'bootstrap4'
+            });
+            $('#Workarea').select2({
+                theme: 'bootstrap4'
+            });
         });
 
     </script>
