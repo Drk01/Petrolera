@@ -22,8 +22,8 @@
                             class="d-none d-md-inline nav_encuesta">Almacén</span>
                     </a>
                     <div class="collapse" id="menu1">
-{{--                         <a href="{{ route('almacen.create') }}" class="list-group-item" data-parent="#menu1">Añadir
-                            producto</a> --}}
+                       <a href="{{ route('almacen.create') }}" class="list-group-item" data-parent="#menu1">Añadir
+                            producto</a>
                         <a href="{{ route('almacen.index') }}" class="list-group-item" data-parent="#menu1">Listado
                             productos</a>
                         <a href="{{ route('marcas.index') }}" class="list-group-item" data-parent="#menu1">Marcas</a>
