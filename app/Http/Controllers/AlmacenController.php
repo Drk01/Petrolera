@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\AlmacenStoreRequest;
 use Illuminate\Support\Facades\DB;
 
 class AlmacenController extends Controller
@@ -60,10 +61,9 @@ class AlmacenController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AlmacenStoreRequest $request)
     {
         dd($request->all());
-        
     }
 
     /**
