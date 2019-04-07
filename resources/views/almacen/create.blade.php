@@ -39,13 +39,13 @@ Añadir producto
                 <select class="form-control" name="trademark" id="trademark">
                     <option value="" selected disabled></option>
                     @foreach ($trademarks as $key => $trademark)
-                    <option>{{ $trademark->name }}</option>
+                    <option value="{{ $trademark->id }}">{{ $trademark->name }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="col">
                 <label for="driveType">Categoría: </label>
-                <select multiple class="form-control" name="driveType" id="driveType">
+                <select multiple class="form-control" name="driveType[]" id="driveType">
                     @foreach ($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
@@ -56,7 +56,7 @@ Añadir producto
     <div class="form-group">
         <div class="form-row">
             <div class="col">
-                <label for="cunit">Cantidad: </label>
+                <label for="cunit">Contenido: </label>
                 <input class="form-control" type="number" min="1" name="cunit" id="cunit">
             </div>
             <div class="col">
@@ -74,9 +74,9 @@ Añadir producto
         <div class="form-row">
             <div class="col">
                 <label for="enviroment">Precauciones ambientales: </label>
-                <select name="enviroment" id="enviroment" class="form-control" multiple>
+                <select name="enviroment[]" id="enviroment" class="form-control" multiple>
                     @foreach ($enviroments as $enviroment)
-                    <option>{{ $enviroment->name }}</option>
+                    <option value="{{ $enviroment->id }}">{{ $enviroment->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -85,7 +85,7 @@ Añadir producto
                 <select class="form-control" name="ubication" id="ubication">
                     <option value="" selected hidden disabled></option>
                     @foreach ($ubications as $key => $ubication)
-                    <option>{{ $ubication->name }}</option>
+                    <option value="{{ $ubication->id }}">{{ $ubication->name }}</option>
                     @endforeach
                 </select>
             </div>
