@@ -4,14 +4,6 @@ Añadir producto
 
 @include('layout.header')
 
-@if ($errors->all())
-<div class="alert alert-danger">
-    @foreach ($errors->all() as $Error)
-    {{ $Error }}<br>
-    @endforeach
-</div>
-@endif
-
 <form action="{{ route('almacen.store') }}" method="post" autocomplete="off">
     @csrf
     <div class="form-group">
@@ -71,6 +63,7 @@ Añadir producto
                 <label for="units">Unidad de medida: </label>
                 <select class="custom-select form-control" name="units" id="units">
                     @foreach ($units as $unit)
+                    <option value="" selected hidden disabled></option>
                     <option value="{{ $unit->id }}">{{ $unit->name }}</option>
                     @endforeach
                 </select>
@@ -90,6 +83,7 @@ Añadir producto
             <div class="col">
                 <label for="ubication">Ubicación: </label>
                 <select class="form-control" name="ubication" id="ubication">
+                    <option value="" selected hidden disabled></option>
                     @foreach ($ubications as $key => $ubication)
                     <option>{{ $ubication->name }}</option>
                     @endforeach
@@ -101,20 +95,22 @@ Añadir producto
         <div class="form-row">
             <div class="col">
                 <label for="usage">Usos: </label>
-                  <select class="form-control" name="uses" id="uses">
+                <select class="form-control" name="uses" id="uses">
                     @foreach ($usages as $usage)
+                    <option value="" selected hidden disabled></option>
                     <option value="{{ $usage->id }}">{{ $usage->name }}</option>
                     @endforeach
-                  </select>
+                </select>
             </div>
             <div class="col">
                 <div class="form-group">
-                  <label for="trash">Tipo de resíduo: </label>
-                  <select class="form-control" name="trash" id="trash">
-                    @foreach ($trashes as $trash)
+                    <label for="trash">Tipo de resíduo: </label>
+                    <select class="form-control" name="trash" id="trash">
+                        <option value="" selected hidden disabled></option>
+                        @foreach ($trashes as $trash)
                         <option value="{{ $trash->id }}">{{ $trash->name }}</option>
-                    @endforeach
-                  </select>
+                        @endforeach
+                    </select>
                 </div>
             </div>
         </div>
@@ -122,6 +118,7 @@ Añadir producto
     <div class="form-group">
         <label for="responsable">Responsable: </label>
         <select class="form-control" name="responsable" id="responsable">
+            <option value="" selected hidden disabled></option>
             @foreach ($responsables as $responsable)
             <option value="{{ $responsable->id }}">{{ $responsable->name }}</option>
             @endforeach
