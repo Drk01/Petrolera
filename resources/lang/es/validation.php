@@ -183,7 +183,15 @@ return [
         'productName '=> 'nombre del producto',
         'quantityItems' => 'cantidad de artículos',
         'types' => 'precauciones',
-        'userType' => 'Tipo de usuario'
+        'userType' => 'Tipo de usuario',
+        'trademark' => 'marca',
+        'driveType' => 'categoría',
+        'units' => 'unidades de medida',
+        'enviroment' => 'precauciones ambientales',
+        'ubication' => 'ubicación',
+        'uses' => 'usos',
+        'trash' => 'resíduo',
+        'cunit' => 'contenido'
     ],
 ];
 
