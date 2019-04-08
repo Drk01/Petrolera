@@ -13,13 +13,13 @@ class CreateTrashHasTrashTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('trash_trashType', function (Blueprint $table) {
+        Schema::create('storage_trashType', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('trash_id')->unsigned();
+            $table->bigInteger('storage_id')->unsigned();
             $table->bigInteger('trashType_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('trash_id')->references('id')->on('trash')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('storage_id')->references('id')->on('storage')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('trashType_id')->references('id')->on('trashType')->onDelete('cascade');
 
             $table->engine = 'InnoDB';
@@ -33,6 +33,6 @@ class CreateTrashHasTrashTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trash_trashType');
+        Schema::dropIfExists('storage_trashType');
     }
 }
