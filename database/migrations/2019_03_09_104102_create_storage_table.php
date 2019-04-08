@@ -18,6 +18,7 @@ class CreateStorageTable extends Migration
             $table->bigInteger('partNumber')->unique();
             $table->string('productName', 100);
             $table->longText('description');
+            $table->longText('observations')->nullable();
             $table->timestamps();
             $table->engine = 'InnoDB';
         });
