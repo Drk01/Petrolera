@@ -22,8 +22,11 @@ class AlmacenController extends Controller
     public function index()
     {
         return view('almacen.index')->with([
-            'user'=>Auth::user()->user,
-            'storage' => DB::table('storage')->get()
+            'storage' => DB::table('storage')->get(),
+            'storage_ubication' => DB::table('storage_ubication')->get(),
+            'ubications' => DB::table('ubication')->get(),
+            'users' => DB::table('users')->get(),
+            'responsibles' => DB::table('storage_responsible')->get()
         ]);
     }
 
@@ -144,7 +147,26 @@ class AlmacenController extends Controller
      */
     public function show($id)
     {
-        //
+        dd($id);
+        $ubications = DB::table('ubication')->get();
+        $trademarks = DB::table('trademark')->get();
+        $enviroments = DB::table('enviroment')->get();
+        $units = DB::table('units')->get();
+        $categories = DB::table('driveType')->get();
+        $usages = DB::table('usage')->get();
+        $trashes = DB::table('trashType')->get();
+        $responsables = DB::table('users')->get();
+
+        return view('almacen.create')->with([
+            'ubications' => $ubications,
+            'trademarks' => $trademarks,
+            'enviroments' => $enviroments,
+            'units' => $units,
+            'categories' => $categories,
+            'usages' => $usages,
+            'trashes' => $trashes,
+            'responsables' => $responsables
+        ]);
     }
 
     /**
