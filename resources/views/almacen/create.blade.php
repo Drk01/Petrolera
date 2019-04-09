@@ -10,7 +10,7 @@ Añadir producto
         <div class="form-row">
             <div class="col">
                 <label for="partNumber">Numero de parte: </label>
-                <input type="text" name="partNumber" id="partNumber" required class="form-control"
+                <input type="number" name="partNumber" id="partNumber" required class="form-control"
                     placeholder="Inserte el código de la pieza">
             </div>
             <div class="col">

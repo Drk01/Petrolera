@@ -24,7 +24,7 @@ class AlmacenStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'partNumber' => 'required|unique:storage,partNumber',
+            'partNumber' => 'required|unique:storage,partNumber|numeric',
             'productName' => 'required',
             'description' => 'required',
             'observations' => '',
