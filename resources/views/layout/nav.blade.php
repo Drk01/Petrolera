@@ -38,14 +38,14 @@
                             <a href="{{ route('usos.index') }}" class="list-group-item"
                             data-parent="#menu1">Usos</a>
                     </div>
-{{--                     <a href="#menu2" class="list-group-item d-inline-block collapsed" data-toggle="collapse"
+                    <a href="#menu2" class="list-group-item d-inline-block collapsed" data-toggle="collapse"
                         data-parent="#sidebar" aria-expanded="false"><i class="fa fa-clipboard fa-lg"></i><span
                             class="d-none d-md-inline nav_encuesta">Préstamos</span>
                     </a>
                     <div class="collapse" id="menu2">
-                        <a href="preguntas" class="list-group-item" data-parent="#menu2">Listado de préstamos</a>
                         <a href="secciones" class="list-group-item" data-parent="#menu2">Añadir préstamo</a>
-                    </div> --}}
+                        <a href="preguntas" class="list-group-item" data-parent="#menu2">Listado de préstamos</a>
+                    </div>
 
                     <a href="#menu3" class="list-group-item d-inline-block collapsed" data-toggle="collapse"
                         data-parent="#sidebar" aria-expanded="false"><i class="fa fa-users fa-lg"></i><span
