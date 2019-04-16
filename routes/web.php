@@ -74,3 +74,8 @@ Route::get('/', 'Auth\LoginController@showLoginForm')->middleware('guest');
    * Units
    */
   Route::resource('/medidas', 'UnitsController');
+
+  /**
+   * Usages
+   */
+  Route::resource('/usos', 'UsagesController');
