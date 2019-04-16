@@ -43,8 +43,8 @@
                             class="d-none d-md-inline nav_encuesta">Préstamos</span>
                     </a>
                     <div class="collapse" id="menu2">
-                        <a href="secciones" class="list-group-item" data-parent="#menu2">Añadir préstamo</a>
-                        <a href="preguntas" class="list-group-item" data-parent="#menu2">Listado de préstamos</a>
+                        <a href="{{ route('prestamos.create') }}" class="list-group-item" data-parent="#menu2">Añadir préstamo</a>
+                        <a href="{{ route('prestamos.index') }}" class="list-group-item" data-parent="#menu2">Listado de préstamos</a>
                     </div>
 
                     <a href="#menu3" class="list-group-item d-inline-block collapsed" data-toggle="collapse"
