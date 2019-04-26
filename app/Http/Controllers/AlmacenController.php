@@ -147,7 +147,6 @@ class AlmacenController extends Controller
      */
     public function show($id)
     {
-        dd($id);
         $ubications = DB::table('ubication')->get();
         $trademarks = DB::table('trademark')->get();
         $enviroments = DB::table('enviroment')->get();

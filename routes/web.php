@@ -84,3 +84,9 @@ Route::get('/', 'Auth\LoginController@showLoginForm')->middleware('guest');
    * Loans
    */
   Route::resource('/prestamos', 'LoansController');
+
+  /**
+   * Trash
+   */
+
+Route::resource('/basuras', 'TrashController');
