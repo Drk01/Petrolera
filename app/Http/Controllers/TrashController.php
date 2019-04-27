@@ -44,7 +44,19 @@ class TrashController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $validate = $request->validate([
+          'name' => 'required|string|unique:trashType,name',
+          'description' => 'required|string'
+        ]);
+
+        DB::table('trashType')->insert([
+          'name' => trim($request->name),
+          'description' => trim($request->description),
+          'created_at' => now(),
+          'updated_at' => now()
+        ]);
+
+        return redirect(route('basuras.index'));
     }
 
     /**
@@ -55,7 +67,10 @@ class TrashController extends Controller
      */
     public function show($id)
     {
-        //
+      return view('trash.create')->with([
+        'basura' => DB::table('trashType')->where('id',$id)->first(),
+        'Accion' => 'Mostrar'
+      ]);
     }
 
     /**
@@ -66,7 +81,10 @@ class TrashController extends Controller
      */
     public function edit($id)
     {
-        //
+      return view('trash.create')->with([
+        'basura' => DB::table('trashType')->where('id',$id)->first(),
+        'Accion' => 'Editar'
+      ]);
     }
 
     /**
@@ -78,7 +96,18 @@ class TrashController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $Validate = $request->validate([
+          'name' => 'required|string',
+          'description' => 'required|string'
+        ]);
+
+        DB::table('trashType')->where('id',$id)->update([
+          'name' => trim($request->name),
+          'description' => trim($request->description),
+          'updated_at' => now()
+        ]);
+
+        return redirect(route('basuras.index'));
     }
 
     /**
@@ -89,6 +118,13 @@ class TrashController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Basuras = DB::table('storage_trashType')->where('trashType_id',$id)->count();
+
+        if ($Basuras == 0) {
+          DB::table('trashType')->where('id','=',$id)->delete();
+          return redirect()->back();
+        }else{
+            return redirect()->back()->withErrors(['No puedes eliminar una marca que tenga productos dentro']);
+        }
     }
 }
