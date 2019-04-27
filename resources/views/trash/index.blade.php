@@ -7,7 +7,7 @@ Tipos de desecho
 <center>
 
     <div class="btn-group" role="group" aria-label="Basic example">
-        <button class="btn btn-success" onclick="window.location.href='{{route('basuras.create')}}'"> Crear Basura
+        <button class="btn btn-success" onclick="window.location.href='{{route('basuras.create')}}'"> Crear deshecho
         </button>
     </div>
 </center>
