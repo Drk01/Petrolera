@@ -17,6 +17,7 @@ class CreateLoansTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('storage_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
+            $table->date('returnDate');
             $table->timestamps();
 
             $table->engine = 'InnoDB';
