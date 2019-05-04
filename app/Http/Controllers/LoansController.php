@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class LoansController extends Controller
 {
-    
+
+    public function __constructor(){
+      $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,10 @@ class LoansController extends Controller
      */
     public function index()
     {
-        //
+        return view('loans.index')->with([
+          'loans'=> DB::table('loans')->get(),
+          'storage' => DB::table('storage')->get()
+        ]);
     }
 
     /**
@@ -24,7 +32,10 @@ class LoansController extends Controller
      */
     public function create()
     {
-        //
+        return view('loans.create')->with([
+          'Accion' => 'Crear',
+          'users' => DB::table('users')->get()
+        ]);
     }
 
     /**
