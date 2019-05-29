@@ -61,6 +61,15 @@
                         <a href="{{ route('workspaces.index') }}" class="list-group-item" data-parent="#menu3">Areas de
                             trabajo</a>
                     </div>
+
+                    <a href="#menu5" class="list-group-item d-inline-block collapsed" data-toggle="collapse"
+                        data-parent="#sidebar" aria-expanded="false"><i class="fa fa-users fa-lg"></i><span
+                            class="d-none d-md-inline nav_encuesta">Bitácoras</span>
+                    </a>
+                    <div class="collapse" id="menu5">
+                        <a href="{{ route('usuarios.index') }}" class="list-group-item" data-parent="#menu5">Entradas</a>
+                        <a href="{{ route('usuarios.index') }}" class="list-group-item" data-parent="#menu5">Salidas</a>
+                    </div>
                     {{-- <a href="enviar" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i
                             class="fa fa-paper-plane fa-lg"></i><span class="d-none d-md-inline nav_encuesta">Envíar
                             Encuesta</span></a>
