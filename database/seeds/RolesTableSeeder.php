@@ -11,7 +11,7 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('role')->insert([
+        DB::table('roles')->insert([
             'id' => '1',
             'name' => 'Administrador',
             'description' => 'Un administrador, puede hacer todo',
@@ -19,7 +19,7 @@ class RolesTableSeeder extends Seeder
             'updated_at' => now()
         ]);
 
-        DB::table('role')->insert([
+        DB::table('roles')->insert([
             'id' => '2',
             'name' => 'Encargado',
             'description' => 'Un encargado, puede autorizar préstamos pero no puede agregar usuarios.',
@@ -27,7 +27,7 @@ class RolesTableSeeder extends Seeder
             'updated_at' => now()
         ]);
 
-        DB::table('role')->insert([
+        DB::table('roles')->insert([
             'id' => '3',
             'name' => 'Usuario',
             'description' => 'Un usuario común, solo puede pedir prestado cosas.',
