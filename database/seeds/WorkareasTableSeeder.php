@@ -12,7 +12,7 @@ class WorkareasTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('workarea')->insert([
+        DB::table('workareas')->insert([
             'id' => '1',
             'name' => 'Zona 1',
             'description' => 'Ejemplo de area',
