@@ -10,4 +10,9 @@ class Storage extends Model
     {
         return $this->belongsToMany('App\Environments')->withTimestamps();
     }
+
+    public function driveTypes()
+    {
+        return $this->belongsToMany('App\DriveType')->withTimestamps();
+    }
 }
