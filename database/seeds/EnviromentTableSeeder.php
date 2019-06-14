@@ -11,7 +11,7 @@ class EnviromentTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('enviroment')->insert([
+        DB::table('environments')->insert([
           'name' => 'Enviroment 1',
           'description' => 'Enviroment 1',
           'created_at' => now(),
