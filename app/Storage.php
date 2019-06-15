@@ -30,4 +30,9 @@ class Storage extends Model
     {
         return $this->belongsToMany('App\Usage')->withTimestamps();
     }
+
+    public function stocks()
+    {
+        return $this->hasMany('App\Stock');
+    }
 }
