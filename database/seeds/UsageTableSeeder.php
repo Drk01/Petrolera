@@ -11,7 +11,7 @@ class UsageTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('usage')->insert([
+        DB::table('usages')->insert([
           'name' => 'Uso 1',
           'description' => 'Uso 1',
           'created_at' => now(),
