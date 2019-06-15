@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Loan');
     }
+
+    public function stocksOnCharges()
+    {
+        return $this->belongsToMany('App\Role')->withTimestamps();
+    }
 }

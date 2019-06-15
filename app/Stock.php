@@ -30,4 +30,9 @@ class Stock extends Model
     {
         return $this->hasMany('App\Loan');
     }
+
+    public function responsibles()
+    {
+        return $this->belongsToMany('App\User')->withTimestamps();
+    }
 }
