@@ -11,7 +11,7 @@ class loanStatusTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('loanStatus')->insert([
+        DB::table('loan_statuses')->insert([
             'id' => '1',
             'name' => 'Devuelto',
             'description' => 'El artículo ya fue retornado al almacén.',
@@ -19,7 +19,7 @@ class loanStatusTableSeeder extends Seeder
             'updated_at' => now()
         ]);
 
-        DB::table('loanStatus')->insert([
+        DB::table('loan_statuses')->insert([
             'id' => '2',
             'name' => 'Pendiente',
             'description' => 'El artículo todavía sigue en préstamo.',
