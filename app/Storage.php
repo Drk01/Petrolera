@@ -25,4 +25,9 @@ class Storage extends Model
     {
         return $this->belongsToMany('App\Unit')->withTimestamps();
     }
+
+    public function usages()
+    {
+        return $this->belongsToMany('App\Usage')->withTimestamps();
+    }
 }
