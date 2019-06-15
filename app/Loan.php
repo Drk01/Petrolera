@@ -21,4 +21,9 @@ class Loan extends Model
     {
         return $this->belongsToMany('App\LoanStatus')->withTimestamps();
     }
+
+    public function loantypes()
+    {
+        return $this->belongsToMany('App\LoanType')->withTimestamps();
+    }
 }
