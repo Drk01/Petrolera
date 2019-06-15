@@ -11,7 +11,7 @@ class trademarksTestTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('trademark')->insert([
+        DB::table('trademarks')->insert([
           'name' => 'Marca 1',
           'description' => 'Marca 1',
           'created_at' => noW(),
