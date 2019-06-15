@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Workarea')->withTimestamps();
     }
+
+    public function loans()
+    {
+        return $this->hasMany('App\Loan');
+    }
 }
