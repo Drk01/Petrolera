@@ -11,7 +11,7 @@ class trashTypeTestTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('trashType')->insert([
+        DB::table('trash_types')->insert([
           'name' => 'Resíduo 1',
           'description' => 'Residuo 1',
           'created_at' => now(),
