@@ -25,4 +25,9 @@ class Stock extends Model
     {
         return $this->hasMany('App\Outputs');
     }
+
+    public function loans()
+    {
+        return $this->hasMany('App\Loan');
+    }
 }

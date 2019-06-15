@@ -11,4 +11,9 @@ class Loan extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function stock()
+    {
+        return $this->belongsTo('App\Stock');
+    }
 }
