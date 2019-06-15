@@ -17,6 +17,7 @@ class CreateUnitsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name', 100);
             $table->longText('description');
+            $table->string('abbreviation', 100);
             $table->timestamps();
         });
     }
