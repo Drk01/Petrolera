@@ -20,4 +20,9 @@ class Stock extends Model
     {
         return $this->hasOne('App\Trash');
     }
+
+    public function outputs()
+    {
+        return $this->hasMany('App\Outputs');
+    }
 }
