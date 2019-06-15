@@ -15,4 +15,9 @@ class Storage extends Model
     {
         return $this->belongsToMany('App\DriveType')->withTimestamps();
     }
+    
+    public function trademarks()
+    {
+        return $this->belongsToMany('App\Trademark')->withTimestamps();
+    }
 }
