@@ -10,4 +10,9 @@ class Stock extends Model
     {
         return $this->belongsTo('App\Stock');
     }
+
+    public function ubications()
+    {
+        return $this->belongsToMany('App\Ubication')->withTimestamps();
+    }
 }
