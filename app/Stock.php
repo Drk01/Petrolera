@@ -15,4 +15,9 @@ class Stock extends Model
     {
         return $this->belongsToMany('App\Ubication')->withTimestamps();
     }
+
+    public function trash()
+    {
+        return $this->hasOne('App\Trash');
+    }
 }
