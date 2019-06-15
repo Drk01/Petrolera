@@ -11,7 +11,7 @@ class UbicationTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('ubication')->insert([
+        DB::table('ubications')->insert([
           'name' => 'Ubication 1',
           'description' => 'Ubication 1',
           'created_at' => now(),
