@@ -17,6 +17,7 @@ class CreateLoanLoanstatusTable extends Migration
             $table->bigIncrements('id');
             $table->integer('loan_id')->unsigned();
             $table->integer('loanStatus_id')->unsigned();
+            $table->integer('autorize_user')->unsigned();
             $table->timestamps();
         });
     }
