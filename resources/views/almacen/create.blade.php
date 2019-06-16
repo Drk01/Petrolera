@@ -7,25 +7,15 @@ Añadir producto
 <form action="{{ route('almacen.store') }}" method="post" autocomplete="off">
     @csrf
     <div class="form-group">
-        <div class="form-row">
-            <div class="col">
-                <label for="partNumber">Numero de parte: </label>
-                <input type="number" name="partNumber" id="partNumber" required class="form-control"
-                    placeholder="Inserte el código de la pieza">
-            </div>
-            <div class="col">
-                <label for="productName">Nombre del producto: </label>
-                <input required type="text" name="productName" class="form-control" id="productName"
-                    placeholder="Inserte el nombre del producto">
-            </div>
-        </div>
+        <label for="productName">Nombre del producto: </label>
+        <input required type="text" name="productName" class="form-control" id="productName"
+            placeholder="Inserte el nombre del producto">
     </div>
     <div class="form-group">
         <label for="description">Descripción del producto: </label>
         <textarea required class="form-control" name="description" id="description" rows="3"
             placeholder="Inserte una descripción sobre el producto"></textarea>
     </div>
-
     <div class="form-group">
         <label for="observations">Observaciones: </label>
         <textarea placeholder="Inserte observaciones que presenta el producto" class="form-control" name="observations"
@@ -71,25 +61,12 @@ Añadir producto
         </div>
     </div>
     <div class="form-group">
-        <div class="form-row">
-            <div class="col">
-                <label for="enviroment">Precauciones ambientales: </label>
-                <select name="enviroment[]" id="enviroment" class="form-control" multiple>
-                    @foreach ($enviroments as $enviroment)
-                    <option value="{{ $enviroment->id }}">{{ $enviroment->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col">
-                <label for="ubication">Ubicación: </label>
-                <select class="form-control" name="ubication" id="ubication">
-                    <option value="" selected hidden disabled></option>
-                    @foreach ($ubications as $key => $ubication)
-                    <option value="{{ $ubication->id }}">{{ $ubication->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
+        <label for="enviroment">Precauciones ambientales: </label>
+        <select name="enviroment[]" id="enviroment" class="form-control" multiple>
+            @foreach ($enviroments as $enviroment)
+            <option value="{{ $enviroment->id }}">{{ $enviroment->name }}</option>
+            @endforeach
+        </select>
     </div>
     <div class="form-group">
         <div class="form-row">
@@ -102,27 +79,7 @@ Añadir producto
                     @endforeach
                 </select>
             </div>
-            <div class="col">
-                <div class="form-group">
-                    <label for="trash">Tipo de resíduo: </label>
-                    <select class="form-control" name="trash" id="trash">
-                        <option value="" selected hidden disabled></option>
-                        @foreach ($trashes as $trash)
-                        <option value="{{ $trash->id }}">{{ $trash->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label for="responsable">Responsable: </label>
-        <select class="form-control" name="responsable" id="responsable">
-            <option value="" selected hidden disabled></option>
-            @foreach ($responsables as $responsable)
-            <option value="{{ $responsable->id }}">{{ $responsable->name }}</option>
-            @endforeach
-        </select>
     </div>
 
     <div class="form-group footer">
@@ -135,13 +92,6 @@ Añadir producto
         $('#trademark').select2({
             theme: 'bootstrap4'
         });
-        $('#ubication').select2({
-            theme: 'bootstrap4'
-        });
-        $('#type').select2({
-            theme: 'bootstrap4'
-        });
-
         $('#enviroment').select2({
             theme: 'bootstrap4'
         });
@@ -152,12 +102,6 @@ Añadir producto
             theme: 'bootstrap4'
         });
         $('#uses').select2({
-            theme: 'bootstrap4'
-        });
-        $('#trash').select2({
-            theme: 'bootstrap4'
-        });
-        $('#responsable').select2({
             theme: 'bootstrap4'
         });
     });
