@@ -6,6 +6,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\AlmacenStoreRequest;
 use Illuminate\Support\Facades\DB;
+use App\Storage;
+use App\Ubication;
+use App\Trademark;
+use App\Environment;
+use App\Unit;
+use App\DriveType;
+use App\Usage;
 
 class AlmacenController extends Controller
 {
