@@ -44,24 +44,13 @@ class AlmacenController extends Controller
      */
     public function create()
     {
-        $ubications = DB::table('ubication')->get();
-        $trademarks = DB::table('trademark')->get();
-        $enviroments = DB::table('enviroment')->get();
-        $units = DB::table('units')->get();
-        $categories = DB::table('driveType')->get();
-        $usages = DB::table('usage')->get();
-        $trashes = DB::table('trashType')->get();
-        $responsables = DB::table('users')->get();
-
         return view('almacen.create')->with([
-            'ubications' => $ubications,
-            'trademarks' => $trademarks,
-            'enviroments' => $enviroments,
-            'units' => $units,
-            'categories' => $categories,
-            'usages' => $usages,
-            'trashes' => $trashes,
-            'responsables' => $responsables
+            'ubications' => Ubication::all(),
+            'trademarks' => Trademark::all(),
+            'enviroments' => Environment::all(),
+            'units' => Unit::all(),
+            'categories' => DriveType::all(),
+            'usages' => Usage::all(),
         ]);
     }
 
