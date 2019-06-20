@@ -35,4 +35,9 @@ class Storage extends Model
     {
         return $this->hasMany('App\Stock');
     }
+
+    public function trashTypes()
+    {
+        return $this->belongsToMany('App\TrashType')->withTimestamps();
+    }
 }
