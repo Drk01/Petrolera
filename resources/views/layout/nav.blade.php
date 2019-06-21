@@ -8,7 +8,6 @@
                         <h4 class="card-title letra_blanca"><i class="fa fa-user-circle-o menu_usuario"
                                 aria-hidden="true"></i>
                             {{ Auth()->user()->user }}</h4>
-                        <small>{{-- $role --}}</small>
                     </center>
                 </div>
             </div>
@@ -39,6 +38,14 @@
                             data-parent="#menu1">Usos</a>
                             <a href="{{ route('basuras.index') }}" class="list-group-item"
                             data-parent="#menu1">Tipo de desecho</a>
+                    </div>
+                     <a href="#menu4" class="list-group-item d-inline-block collapsed" data-toggle="collapse"
+                        data-parent="#sidebar" aria-expanded="false"><i class="fa fa-clipboard fa-lg"></i> <span
+                            class="d-none d-md-inline nav_encuesta">Existencias</span>
+                    </a>
+                    <div class="collapse" id="menu4">
+{{--                        <a href="{{ route('almacen.create') }}" class="list-group-item" data-parent="#menu4">Añadir
+                            producto</a> --}}
                     </div>
                     <a href="#menu2" class="list-group-item d-inline-block collapsed" data-toggle="collapse"
                         data-parent="#sidebar" aria-expanded="false"><i class="fa fa-clipboard fa-lg"></i><span
