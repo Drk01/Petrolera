@@ -29,11 +29,12 @@ class AlmacenController extends Controller
     public function index()
     {
         return view('almacen.index')->with([
-            'storage' => DB::table('storage')->get(),
+            'storage' => Storage::all(),
             'storage_ubication' => DB::table('storage_ubication')->get(),
             'ubications' => DB::table('ubication')->get(),
             'users' => DB::table('users')->get(),
-            'responsibles' => DB::table('storage_responsible')->get()
+            'responsibles' => DB::table('storage_responsible')->get(),
+            'trashtypes' => DB::table('trashTypes')->get()
         ]);
     }
 
@@ -60,79 +61,9 @@ class AlmacenController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AlmacenStoreRequest $request)
+    public function store(Request $request)
     {
-        $productID = DB::table('storage')->insertGetId([
-            'partNumber' => trim($request->partNumber),
-            'productName' => trim($request->productName),
-            'description' => trim($request->description),
-            'observations' => trim($request->observations),
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-
-        DB::table('storage_trademark')->insert([
-            'storage_id' => $productID,
-            'trademark_id' => trim($request->trademark),
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-
-        foreach ($request->driveType as $type) {
-            DB::table('storage_type')->insert([
-                'storage_id' => $productID,
-                'driveType_id' => $type,
-                'created_at' => now(),
-                'updated_at' => now()
-            ]);
-        }
-
-        DB::table('storage_unit')->insert([
-            'storage_id' => $productID,
-            'units_id' => trim($request->units),
-            'quantity' => trim($request->cunit),
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-
-        foreach ($request->enviroment as $enviroment) {
-            DB::table('storage_enviroment')->insert([
-                'storage_id' => $productID,
-                'enviroment_id' => $enviroment,
-                'created_at' => now(),
-                'updated_at' => now()
-            ]);
-        }
-
-        DB::table('storage_ubication')->insert([
-            'storage_id' => $productID,
-            'ubication_id' => trim($request->ubication),
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-
-        DB::table('storage_usage')->insert([
-            'storage_id' => $productID,
-            'usage_id' => trim($request->uses),
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-
-        DB::table('storage_trashType')->insert([
-            'storage_id' => $productID,
-            'trashType_id' => trim($request->trash),
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-
-        DB::table('storage_responsible')->insert([
-            'storage_id' => $productID,
-            'user_id' => trim($request->responsable),
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-
-        return redirect(route('almacen.index'));
+        dd($request->all());
     }
 
     /**
