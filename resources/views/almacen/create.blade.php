@@ -72,10 +72,17 @@ Añadir producto
         <div class="form-row">
             <div class="col">
                 <label for="usage">Usos: </label>
-                <select class="form-control" name="uses" id="uses">
+                <select class="form-control" multiple name="uses" id="uses">
                     @foreach ($usages as $usage)
-                    <option value="" selected hidden disabled></option>
                     <option value="{{ $usage->id }}">{{ $usage->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col">
+                <label for="trashtype">Tipo de residuo: </label>
+                    <select class="form-control" name="trashtype" multiple id="trashtype">
+                    @foreach ($trashes as $trash)
+                    <option value="{{ $trash->id }}">{{ $trash->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -102,6 +109,9 @@ Añadir producto
             theme: 'bootstrap4'
         });
         $('#uses').select2({
+            theme: 'bootstrap4'
+        });
+        $('#trashtype').select2({
             theme: 'bootstrap4'
         });
     });
