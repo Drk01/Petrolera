@@ -17,6 +17,7 @@ class CreateStoragesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name', 100);
             $table->longText('description');
+            $table->longText('observations')->nullable();
             $table->timestamps();
         });
     }
