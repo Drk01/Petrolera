@@ -8,7 +8,7 @@ class Storage extends Model
 {
     public function environments()
     {
-        return $this->belongsToMany('App\Environments')->withTimestamps();
+        return $this->belongsToMany('App\Environment')->withTimestamps();
     }
 
     public function driveTypes()
