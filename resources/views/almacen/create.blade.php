@@ -26,7 +26,7 @@ Añadir producto
         <div class="form-row">
             <div class="col">
                 <label for="trademark">Marca: </label>
-                <select class="form-control" name="trademark" id="trademark">
+                <select required class="form-control" name="trademark" id="trademark">
                     <option value="" selected disabled></option>
                     @foreach ($trademarks as $key => $trademark)
                     <option value="{{ $trademark->id }}">{{ $trademark->name }}</option>
@@ -35,7 +35,7 @@ Añadir producto
             </div>
             <div class="col">
                 <label for="driveType">Categoría: </label>
-                <select multiple class="form-control" name="driveType[]" id="driveType">
+                <select required multiple class="form-control" name="driveType[]" id="driveType">
                     @foreach ($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
@@ -47,13 +47,13 @@ Añadir producto
         <div class="form-row">
             <div class="col">
                 <label for="cunit">Contenido: </label>
-                <input class="form-control" type="number" min="1" name="cunit" id="cunit">
+                <input required class="form-control" type="number" min="1" name="cunit" id="cunit">
             </div>
             <div class="col">
                 <label for="units">Unidad de medida: </label>
-                <select class="custom-select form-control" name="units" id="units">
-                    @foreach ($units as $unit)
+                <select required class="custom-select form-control" name="units" id="units">
                     <option value="" selected hidden disabled></option>
+                    @foreach ($units as $unit)
                     <option value="{{ $unit->id }}">{{ $unit->name }}</option>
                     @endforeach
                 </select>
@@ -62,7 +62,7 @@ Añadir producto
     </div>
     <div class="form-group">
         <label for="enviroment">Precauciones ambientales: </label>
-        <select name="enviroment[]" id="enviroment" class="form-control" multiple>
+        <select required name="enviroment[]" id="enviroment" class="form-control" multiple>
             @foreach ($enviroments as $enviroment)
             <option value="{{ $enviroment->id }}">{{ $enviroment->name }}</option>
             @endforeach
@@ -72,7 +72,7 @@ Añadir producto
         <div class="form-row">
             <div class="col">
                 <label for="usage">Usos: </label>
-                <select class="form-control" multiple name="uses" id="uses">
+                <select required class="form-control" multiple name="uses" id="uses">
                     @foreach ($usages as $usage)
                     <option value="{{ $usage->id }}">{{ $usage->name }}</option>
                     @endforeach
@@ -80,7 +80,7 @@ Añadir producto
             </div>
             <div class="col">
                 <label for="trashtype">Tipo de residuo: </label>
-                    <select class="form-control" name="trashtype" multiple id="trashtype">
+                    <select required class="form-control" name="trashtype" multiple id="trashtype">
                     @foreach ($trashes as $trash)
                     <option value="{{ $trash->id }}">{{ $trash->name }}</option>
                     @endforeach
