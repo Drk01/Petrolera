@@ -21,6 +21,7 @@
         <textarea placeholder="Inserte observaciones que presenta el producto" class="form-control" name="observations"
             id="observations" rows="3"></textarea>
     </div>
+<center><button type="button" onclick="window.location.href='{{ route('almacen.index') }}'" class="btn btn-success btn-lg">Regresar al menú anterior</button></center>
 
     <div class="form-group">
         <div class="form-row">
