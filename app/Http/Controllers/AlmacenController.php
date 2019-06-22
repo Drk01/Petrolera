@@ -48,7 +48,8 @@ class AlmacenController extends Controller
             'units' => Unit::all(),
             'categories' => DriveType::all(),
             'usages' => Usage::all(),
-            'trashes' => TrashType::all()
+            'trashes' => TrashType::all(),
+            'Accion' => 'Crear'
         ]);
     }
 
