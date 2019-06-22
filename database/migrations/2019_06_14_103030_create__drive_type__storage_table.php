@@ -13,9 +13,9 @@ class CreateDriveTypeStorageTable extends Migration
      */
     public function up()
     {
-        Schema::create('driveType_storage', function (Blueprint $table) {
+        Schema::create('drive_type_storage', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('DriveType_id')->unsigned();
+            $table->integer('drive_type_id')->unsigned();
             $table->integer('Storage_id')->unsigned();
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ class CreateDriveTypeStorageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('driveType_storage');
+        Schema::dropIfExists('drive_type_storage');
     }
 }

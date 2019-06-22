@@ -13,7 +13,7 @@ class CreateEnviromentStorageTable extends Migration
      */
     public function up()
     {
-        Schema::create('enviroment_storage', function (Blueprint $table) {
+        Schema::create('environment_storage', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('storage_id')->unsigned();
             $table->integer('environment_id')->unsigned();
@@ -28,6 +28,6 @@ class CreateEnviromentStorageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('enviroment_storage');
+        Schema::dropIfExists( 'environment_storage');
     }
 }
