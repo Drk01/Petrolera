@@ -1,5 +1,5 @@
 @section('Encabezado')
-Añadir producto
+{{ $Accion }} producto
 @endsection
 
 @include('layout.header')
