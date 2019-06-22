@@ -121,7 +121,7 @@ class AlmacenController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $storage = Storage::where('id',$id);
+      $storage = Storage::where('id',$id)->first();
       $storage->name = $request->productName;
       $storage->description = $request->description;
       if($request->observations){
