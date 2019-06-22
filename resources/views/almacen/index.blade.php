@@ -1,4 +1,4 @@
-@section('Encabezado'),
+@section('Encabezado')
 Listado de artículos
 @endsection
 
