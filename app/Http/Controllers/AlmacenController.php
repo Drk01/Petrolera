@@ -147,6 +147,12 @@ class AlmacenController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $storage = Storage::where('id',$id)->first();
+
+      if ($storage->stocks()->count() != 0) {
+        $storage->delete();
+      }
+      
+      return redirect(route('almacen.index'));
     }
 }
