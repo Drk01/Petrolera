@@ -19,11 +19,11 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            $UserID = Auth()->user()->id;
-            $roles_id = DB::table('users_roles')->select(['roles_id'])
-                ->where('users_id','=',$UserID)
-                ->where('roles_id','!=','3')->first();
-                
+            $UserID = auth()->user()->id;
+            $roles_id = DB::table('role_user')->select(['role_id'])
+                ->where('user_id','=',$UserID)
+                ->where('role_id','!=','3')->first();
+
             if( $roles_id){
                 return redirect('/dashboard');
             }
