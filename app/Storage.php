@@ -23,7 +23,7 @@ class Storage extends Model
 
     public function units()
     {
-        return $this->belongsToMany('App\Unit')->withTimestamps();
+        return $this->belongsToMany('App\Unit')->withTimestamps()->withPivot('size');
     }
 
     public function usages()

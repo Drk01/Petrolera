@@ -8,6 +8,6 @@ class Unit extends Model
 {
     public function storages()
     {
-        return $this->belongsToMany('App\Storage')->withTimestamps();
+        return $this->belongsToMany('App\Storage')->withTimestamps()->withPivot('size');
     }
 }
