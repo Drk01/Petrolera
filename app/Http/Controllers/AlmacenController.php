@@ -13,6 +13,7 @@ use App\Environment;
 use App\Unit;
 use App\DriveType;
 use App\Usage;
+use App\TrashType;
 
 class AlmacenController extends Controller
 {
