@@ -30,12 +30,7 @@ class AlmacenController extends Controller
     public function index()
     {
         return view('almacen.index')->with([
-            'storage' => Storage::all(),
-            'storage_ubication' => DB::table('storage_ubication')->get(),
-            'ubications' => DB::table('ubication')->get(),
-            'users' => DB::table('users')->get(),
-            'responsibles' => DB::table('storage_responsible')->get(),
-            'trashtypes' => DB::table('trashTypes')->get()
+            'storages' => Storage::all()
         ]);
     }
 
