@@ -73,7 +73,7 @@ class AlmacenController extends Controller
         $storage->driveTypes()->sync($request->driveType);
         $storage->units()->sync([$request->units => ['size' => $request->cunit]]);
         $storage->environments()->sync($request->enviroment);
-        $storage->usages()->sync($request->usage);
+        $storage->usages()->sync($request->uses);
         $storage->trashTypes()->sync($request->trashtype);
 
         return redirect(route('almacen.index'));
