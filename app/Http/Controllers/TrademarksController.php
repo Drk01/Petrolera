@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateMarcaRequest;
-use DB;
+use App\Trademark;
 
 class TrademarksController extends Controller
 {
@@ -20,7 +20,7 @@ class TrademarksController extends Controller
      */
     public function index()
     {
-        $Marcas = DB::table('trademark')->get();
+        $Marcas = Trademark::all();
         return view('marcas.index')->with(['Marcas'=>$Marcas]);
     }
 
@@ -43,12 +43,10 @@ class TrademarksController extends Controller
      */
     public function store(CreateMarcaRequest $request)
     {
-        DB::table('trademark')->insert([
-            'name' => trim($request->name),
-            'description' => trim($request->description),
-            'created_at' => now(),
-            'updated_at' =>now()
-        ]);
+        $Trademark = new Trademark;
+        $Trademark->name = $request->name;
+        $Trademark->description = $request->description;
+        $Trademark->save();
 
         return redirect(route('marcas.index'));
     }
@@ -61,7 +59,7 @@ class TrademarksController extends Controller
      */
     public function show($id)
     {
-        $Marca = DB::table('trademark')->where('id','=',$id)->first();
+        $Marca = Trademark::where('id',$id)->first();
 
         return view('marcas.create')->with([
             'Marca' => $Marca,
@@ -77,7 +75,7 @@ class TrademarksController extends Controller
      */
     public function edit($id)
     {
-        $Marca = DB::table('trademark')->where('id','=',$id)->first();
+        $Marca =Trademark::where('id',$id)->first();
 
         return view('marcas.create')->with([
             'Marca' => $Marca,
@@ -98,11 +96,10 @@ class TrademarksController extends Controller
             'name' => 'required'
         ]);
 
-        DB::table('trademark')->where('id','=',$id)->update([
-            'name' => trim($request->name),
-            'description' => trim($request->description),
-            'updated_at' => now()
-        ]);
+        $trademark = Trademark::where('id',$id)->first();
+        $trademark->name = $request->name;
+        $trademark->description = $request->description;
+        $trademark->save();
 
         return redirect(route('marcas.index'));
     }
@@ -115,13 +112,12 @@ class TrademarksController extends Controller
      */
     public function destroy($id)
     {
-        $StorageTrademark = DB::table('storage_trademark')->where('trademark_id','=',$id)->count();
-        if($StorageTrademark==0){
-            DB::table('trademark')->where('id','=',$id)->delete();
+        $Trademarks = Trademark::where('id',$id)->first()->storages()->count();
+        if($Trademarks==0){
+              Trademark::destroy(["$id"]);
             return redirect()->back();
         }else{
             return redirect()->back()->withErrors(['No puedes eliminar una marca que tenga productos dentro']);
         }
     }
 }
-
