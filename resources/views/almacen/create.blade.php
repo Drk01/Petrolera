@@ -180,7 +180,119 @@
               </div>
           </div>
       </div>
+@endif
 
+@if ($Accion == 'Editar')
+  <form action="{{ route('almacen.update', $storage->id) }}" method="post">
+    @csrf
+    @method('PUT')
+  <div class="form-group">
+      <label for="productName">Nombre del producto: </label>
+      <input required type="text" name="productName" class="form-control" id="productName"
+          placeholder="Inserte el nombre del producto" value="{{ $storage->name }}">
+  </div>
+  <div class="form-group">
+      <label for="description">Descripción del producto: </label>
+      <textarea required class="form-control" name="description" id="description" rows="3"
+          placeholder="Inserte una descripción sobre el producto">{{ $storage->description }}</textarea>
+  </div>
+  <div class="form-group">
+      <label for="observations">Observaciones: </label>
+      <textarea placeholder="Este producto no tiene observaciones" class="form-control" name="observations"
+          id="observations" rows="3">{{ $storage->observations }}</textarea>
+  </div>
+
+  <div class="form-group">
+      <div class="form-row">
+          <div class="col">
+              <label for="trademark">Marca: </label>
+              <select required class="form-control" name="trademark" id="trademark">
+                @foreach ($trademarks as $element)
+                  <option value="{{ $element->id }}" @if ($storage->trademarks()->first()->name == $element->name)
+                    selected
+                  @endif>{{ $element->name }}</option>
+                @endforeach
+              </select>
+          </div>
+          <div class="col">
+              <label for="driveType">Categoría: </label>
+              <select required multiple class="form-control" name="driveType[]" id="driveType">
+                @foreach ($categories as $element)
+                  <option value="{{ $element->id }}" @foreach ($storage->driveTypes()->get() as $element2)
+                    @if ($element->id == $element2->id)
+                      selected
+                    @endif
+                  @endforeach>{{ $element->name }}</option>
+                @endforeach
+              </select>
+          </div>
+      </div>
+  </div>
+  <div class="form-group">
+      <div class="form-row">
+          <div class="col">
+              <label for="cunit">Contenido: </label>
+              <input required class="form-control" type="number" min="1" name="cunit" id="cunit" value="{{ $storage->units->first()->pivot->size }}">
+          </div>
+          <div class="col">
+              <label for="units">Unidad de medida: </label>
+              <select required class="custom-select form-control" name="units" id="units">
+                @foreach ($units as $element)
+                  <option value="{{ $element->id }}" @foreach ($storage->units as $element2)
+                    @if ($element->id == $element2->id)
+                      selected
+                    @endif
+                  @endforeach>{{ $element->name }}</option>
+                @endforeach
+              </select>
+          </div>
+      </div>
+  </div>
+  <div class="form-group">
+      <label for="enviroment">Precauciones ambientales: </label>
+      <select required name="enviroment[]" id="enviroment" class="form-control" multiple>
+        @foreach ($environments as $element)
+          <option value="{{ $element->id }}" @foreach ($storage->environments as $element2)
+            @if ($element->id == $element2->id)
+              selected
+            @endif
+          @endforeach>{{ $element->name }}</option>
+        @endforeach
+      </select>
+  </div>
+  <div class="form-group">
+      <div class="form-row">
+          <div class="col">
+              <label for="usage">Usos: </label>
+              <select required class="form-control" multiple name="uses" id="uses">
+                @foreach ($usages as $element)
+                  <option value="{{ $element->id }}" @foreach ($storage->usages as $element2)
+                    @if ($element->id && $element2->id)
+                      selected
+                    @endif
+                  @endforeach>{{ $element->name }}</option>
+                @endforeach
+              </select>
+          </div>
+          <div class="col">
+              <label for="trashtype">Tipo de residuo: </label>
+                  <select required class="form-control" name="trashtype" multiple id="trashtype">
+                    @foreach ($trashes as $element)
+                      <option value="{{ $element->id }}" @foreach ($storage->trashTypes as $element2)
+                        @if ($element->id == $element2->id)
+                          selected
+                        @endif
+                      @endforeach>{{ $element->name }}</option>
+                    @endforeach
+              </select>
+          </div>
+      </div>
+  </div>
+
+  <div class="form-group footer">
+      <button type="submit" class="btn btn-success btn-lg" style="float:right;">Guardar</button>
+  </div>
+</form>
 @endif
 
 <script type="text/javascript">
