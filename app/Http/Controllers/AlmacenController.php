@@ -63,7 +63,22 @@ class AlmacenController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $storage = new Storage;
+        $storage->name = $request->productName;
+        $storage->description = $request->description;
+        if($request->observations){
+            $storage->observations = $request->observations;
+        }
+        $storage->save();
+
+        $storage->trademarks()->sync($request->trademark);
+        $storage->driveTypes()->sync($request->driveType);
+        $storage->units()->sync([$request->units => ['size' => $request->cunit]]);
+        $storage->environments()->sync($request->enviroment);
+        $storage->usages()->sync($request->usage);
+        $storage->trashTypes()->sync($request->trashtype);
+
+        return redirect(route('almacen.index'));
     }
 
     /**
