@@ -149,10 +149,10 @@ class AlmacenController extends Controller
     {
       $storage = Storage::where('id',$id)->first();
 
-      if ($storage->stocks()->count() != 0) {
+      if ($storage->stocks()->count() == 0) {
         $storage->delete();
       }
-      
+
       return redirect(route('almacen.index'));
     }
 }
