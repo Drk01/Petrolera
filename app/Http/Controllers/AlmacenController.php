@@ -42,7 +42,6 @@ class AlmacenController extends Controller
     public function create()
     {
         return view('almacen.create')->with([
-            'ubications' => Ubication::all(),
             'trademarks' => Trademark::all(),
             'enviroments' => Environment::all(),
             'units' => Unit::all(),
