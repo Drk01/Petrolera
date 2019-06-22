@@ -121,7 +121,22 @@ class AlmacenController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $storage = Storage::where('id',$id);
+      $storage->name = $request->productName;
+      $storage->description = $request->description;
+      if($request->observations){
+          $storage->observations = $request->observations;
+      }
+      $storage->save();
+
+      $storage->trademarks()->sync($request->trademark);
+      $storage->driveTypes()->sync($request->driveType);
+      $storage->units()->sync([$request->units => ['size' => $request->cunit]]);
+      $storage->environments()->sync($request->enviroment);
+      $storage->usages()->sync($request->uses);
+      $storage->trashTypes()->sync($request->trashtype);
+
+      return redirect(route('almacen.index'));
     }
 
     /**
