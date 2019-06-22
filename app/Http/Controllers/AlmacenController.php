@@ -100,7 +100,16 @@ class AlmacenController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('almacen.create')->with([
+          'storage' => Storage::where('id',$id)->first(),
+          'Accion' => 'Editar',
+          'trademarks' => Trademark::all(),
+          'environments' => Environment::all(),
+          'units' => Unit::all(),
+          'categories' => DriveType::all(),
+          'usages' => Usage::all(),
+          'trashes' => TrashType::all()
+        ]);
     }
 
     /**
