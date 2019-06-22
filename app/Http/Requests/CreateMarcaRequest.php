@@ -24,7 +24,7 @@ class CreateMarcaRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:trademark,name',
+            'name' => 'required|unique:trademarks,name',
             'description' => 'required'
         ];
     }
