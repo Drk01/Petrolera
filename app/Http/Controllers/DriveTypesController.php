@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+use App\DriveType;
 
 class DriveTypesController extends Controller
 {
@@ -18,7 +18,7 @@ class DriveTypesController extends Controller
      */
     public function index()
     {
-        $Categorias = DB::table('driveType')->get();
+        $Categorias = DriveType::all();
         return view('categorias.index')->with([
             'categorias' => $Categorias
         ]);
@@ -45,16 +45,14 @@ class DriveTypesController extends Controller
     public function store(Request $request)
     {
         $Validator = $request->validate([
-            'name' => 'required|unique:driveType,name',
+            'name' => 'required|unique:drive_types,name',
             'description' => 'required'
         ]);
 
-        DB::table('driveType')->insert([
-            'name' => trim($request->name),
-            'description' => trim($request->description),
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
+        $dtype = new DriveType();
+        $dtype->name = $request->name;
+        $dtype->description = $request->description;
+        $dtype->save();
 
         return redirect(route('categorias.index'));
     }
@@ -67,7 +65,7 @@ class DriveTypesController extends Controller
      */
     public function show($id)
     {
-        $Categoria = DB::table('driveType')->where('id','=',$id)->first();
+        $Categoria = DriveType::where('id',$id)->first();
         return view('categorias.create')->with([
             'Accion' => 'Mostrar',
             'categoria' => $Categoria
@@ -82,7 +80,7 @@ class DriveTypesController extends Controller
      */
     public function edit($id)
     {
-        $Categoria = DB::table('driveType')->where('id','=',$id)->first();
+        $Categoria = DriveType::where('id',$id)->first();
 
         return view('categorias.create')->with([
             'Accion' => 'Editar',
@@ -104,11 +102,10 @@ class DriveTypesController extends Controller
             'description' => 'required'
         ]);
 
-        DB::table('driveType')->where('id','=',$id)->update([
-            'name' => trim($request->name),
-            'description' => trim($request->description),
-            'updated_at' => now()
-        ]);
+        $dtype = DriveType::where('id',$id)->first();
+        $dtype->name = $request->name;
+        $dtype->description = $request->description;
+        $dtype->save();
 
         return redirect(route('categorias.index'));
     }
@@ -121,12 +118,15 @@ class DriveTypesController extends Controller
      */
     public function destroy($id)
     {
-        $StorageDrivetype = DB::table('storage_type')->where('driveType_id','=',$id)->count();
-        if($StorageDrivetype==0){
-            DB::table('trademark')->where('id','=',$id)->delete();
-            return redirect()->back();
-        }else{
-            return redirect()->back()->withErrors(['No puedes eliminar una categoría que tenga productos dentro']);
-        }
+      $dTypes = DriveType::where('id',$id)->first()->storages()->count();
+
+      if ($dTypes == 0) {
+        DriveType::where('id',$id)->first()->delete();
+        return redirect()->back();
+      }else{
+        return redirect()->back()->withErrors([
+          'No se puede eliminar un registro con productos dentro'
+        ]);
+      }
     }
 }
