@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreUbicationRequest;
-use DB;
+use App\Ubication;
 
 class UbicationsController extends Controller
 {
@@ -19,7 +19,7 @@ class UbicationsController extends Controller
      */
     public function index()
     {
-        $Ubicaciones = DB::table('ubication')->get();
+        $Ubicaciones = Ubication::all();
         return view('ubicaciones.index')->with([
             'ubicaciones' => $Ubicaciones
         ]);
@@ -43,12 +43,10 @@ class UbicationsController extends Controller
      */
     public function store(StoreUbicationRequest $request)
     {
-        DB::table('ubication')->insert([
-            'name' => trim($request->name),
-            'description' => trim($request->description),
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
+        $ubication = new Ubication;
+        $ubication->name = $request->name;
+        $ubication->description = $request->description;
+        $ubication->save();
 
         return redirect(route('ubicaciones.index'));
     }
@@ -61,7 +59,7 @@ class UbicationsController extends Controller
      */
     public function show($id)
     {
-        $Ubicacion = DB::table('ubication')->where('id','=',$id)->first();
+        $Ubicacion = Ubication::where('id',$id)->first();
 
         return view('ubicaciones.create')->with([
             'ubicacion' => $Ubicacion,
@@ -95,14 +93,14 @@ class UbicationsController extends Controller
     public function update(Request $request, $id)
     {
         $Validate = $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'description' => 'required'
         ]);
 
-        DB::table('ubication')->where('id','=',$id)->update([
-            'name' => trim($request->name),
-            'description' => trim($request->description),
-            'updated_at' => now()
-        ]);
+        $ubication = Ubication::where('id',$id)->first();
+        $ubication->name = $request->name;
+        $ubication->description = $request->description;
+        $ubication->save();
 
         return redirect(route('ubicaciones.index'));
     }
@@ -115,12 +113,15 @@ class UbicationsController extends Controller
      */
     public function destroy($id)
     {
-        $Ubication = DB::table('storage_ubication')->where('ubication_id','=',$id)->count();
-        if($Ubication==0){
-            DB::table('ubication')->where('id','=',$id)->delete();
-            return redirect()->back();
-        }else{
-            return redirect()->back()->withErrors(['No puedes eliminar una ubicación que tenga productos dentro']);
-        }
+      $Ubications = Ubication::where('id',$id)->first()->stocks()->count();
+
+      if ($Ubications == 0) {
+        Ubication::where('id',$id)->first()->delete();
+        return redirect()->back();
+      }else{
+        return redirect()->back()->withErrors([
+          'No se puede borrar una ubicación que tenga existencias'
+        ]);
+      }
     }
 }
