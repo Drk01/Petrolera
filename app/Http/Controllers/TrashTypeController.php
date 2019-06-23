@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+use App\TrashType;
 
-class TrashController extends Controller
+class TrashTypeController extends Controller
 {
   public function __constructor()
   {
@@ -20,7 +20,7 @@ class TrashController extends Controller
     public function index()
     {
         return view('trash.index')->with([
-            'basuras' => DB::table('trashType')->get()
+            'basuras' => TrashType::all()
         ]);
     }
 
@@ -45,16 +45,14 @@ class TrashController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-          'name' => 'required|string|unique:trashType,name',
+          'name' => 'required|string|unique:trash_types,name',
           'description' => 'required|string'
         ]);
 
-        DB::table('trashType')->insert([
-          'name' => trim($request->name),
-          'description' => trim($request->description),
-          'created_at' => now(),
-          'updated_at' => now()
-        ]);
+        $TrashType = new TrashType;
+        $TrashType->name = $request->name;
+        $TrashType->description = $request->description;
+        $TrashType->save();
 
         return redirect(route('basuras.index'));
     }
@@ -68,7 +66,7 @@ class TrashController extends Controller
     public function show($id)
     {
       return view('trash.create')->with([
-        'basura' => DB::table('trashType')->where('id',$id)->first(),
+        'basura' => TrashType::where('id',$id)->first(),
         'Accion' => 'Mostrar'
       ]);
     }
@@ -82,7 +80,7 @@ class TrashController extends Controller
     public function edit($id)
     {
       return view('trash.create')->with([
-        'basura' => DB::table('trashType')->where('id',$id)->first(),
+        'basura' => TrashType::where('id',$id)->first(),
         'Accion' => 'Editar'
       ]);
     }
@@ -118,13 +116,15 @@ class TrashController extends Controller
      */
     public function destroy($id)
     {
-        $Basuras = DB::table('storage_trashType')->where('trashType_id',$id)->count();
+        $Basuras = TrashType::where('id',$id)->first()->storages()->count();
 
         if ($Basuras == 0) {
-          DB::table('trashType')->where('id','=',$id)->delete();
+          TrashType::where('id',$id)->first()->delete();
           return redirect()->back();
         }else{
-            return redirect()->back()->withErrors(['No puedes eliminar una marca que tenga productos dentro']);
+          return redirect()->back()->withErrors([
+            'No puedes eliminar una marca que tenga productos dentro'
+          ]);
         }
     }
 }

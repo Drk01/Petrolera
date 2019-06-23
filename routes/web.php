@@ -89,4 +89,4 @@ Route::get('/', 'Auth\LoginController@showLoginForm')->middleware('guest');
    * Trash
    */
 
-Route::resource('/basuras', 'TrashController');
+Route::resource('/basuras', 'TrashTypeController');
