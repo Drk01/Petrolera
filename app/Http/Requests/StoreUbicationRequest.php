@@ -24,7 +24,7 @@ class StoreUbicationRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:ubication,name',
+            'name' => 'required|unique:ubications,name',
             'description' => 'required'
         ];
     }
