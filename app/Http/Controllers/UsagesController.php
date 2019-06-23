@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Usage;
+
 
 class UsagesController extends Controller
 {
@@ -20,7 +21,7 @@ class UsagesController extends Controller
      */
     public function index()
     {
-        $Usages = DB::table('usage')->get();
+        $Usages = Usage::all();
 
         return view('usages.index')->with([
             'usos' => $Usages
@@ -52,12 +53,10 @@ class UsagesController extends Controller
              'description' => 'required'
         ]);
 
-        DB::table('usage')->insert([
-            'name' => trim($request->name),
-            'description' => trim($request->description),
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
+        $usage = new Usage;
+        $usage->name = $request->name;
+        $usage->description = $request->description;
+        $usage->save();
 
         return redirect(route('usos.index'));
     }
@@ -70,7 +69,7 @@ class UsagesController extends Controller
      */
     public function show($id)
     {
-        $Uso = DB::table('usage')->where('id',$id)->first();
+        $Uso = Usage::where('id',$id)->first();
 
         return view('usages.create')->with([
             'uso' => $Uso,
@@ -86,7 +85,7 @@ class UsagesController extends Controller
      */
     public function edit($id)
     {
-        $uso = DB::table('usage')->where('id',$id)->first();
+        $uso = Usage::where('id',$id)->first();
 
         return view('usages.create')->with([
             'uso' => $uso,
@@ -104,14 +103,13 @@ class UsagesController extends Controller
     public function update(Request $request, $id)
     {
         $Validate = $request->validate([
-            'name' => ['required']
+            'name' => 'required'
         ]);
 
-        DB::table('usage')->where('id',$id)->update([
-            'name' => trim($request->name),
-            'description' => trim($request->description),
-            'updated_at' => now()
-        ]);
+        $usage = Usage::where('id',$id)->first();
+        $usage->name = $request->name;
+        $usage->description = $request->description;
+        $usage->save();
 
         return redirect(route('usos.index'));
     }
@@ -124,12 +122,15 @@ class UsagesController extends Controller
      */
     public function destroy($id)
     {
-        $Usage = DB::table('storage_usage')->where('usage_id','=',$id)->count();
-        if($Usage==0){
-            DB::table('usage')->where('id','=',$id)->delete();
-            return redirect()->back();
-        }else{
-            return redirect()->back()->withErrors(['No puedes eliminar una marca que tenga productos dentro']);
-        }
+      $usages = Usage::where('id',$id)->first()->storages()->count();
+
+      if ($usages == 0) {
+        Usage::destroy($id);
+        return redirect()->back();
+      }else{
+        return redirect()->back()->withErrors([
+          'No puedes eliminar una marca que tenga productos dentro'
+        ]);
+      }
     }
 }
