@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+use App\Environment;
+
 
 class EnviromentController extends Controller
 {
@@ -18,7 +19,7 @@ class EnviromentController extends Controller
      */
     public function index()
     {
-        $Enviroment = DB::table('enviroment')->get();
+        $Enviroment = Environment::all();
 
         return view('enviroment.index')->with([
             'ambientales' => $Enviroment
@@ -46,16 +47,14 @@ class EnviromentController extends Controller
     public function store(Request $request)
     {
         $Validator = $request->validate([
-            'name' => 'required|unique:enviroment,name',
+            'name' => 'required|unique:environments,name',
             'description' => 'required'
         ]);
 
-        DB::table('enviroment')->insert([
-            'name' => trim($request->name),
-            'description' => trim($request->description),
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
+        $e = new Environment;
+        $e->name = $request->name;
+        $e->description = $request->description;
+        $e->save();
 
         return redirect(route('ambientales.index'));
     }
@@ -68,7 +67,7 @@ class EnviromentController extends Controller
      */
     public function show($id)
     {
-        $Enviroment = DB::table('enviroment')->where('id','=',$id)->first();
+        $Enviroment = Environment::where('id',$id)->first();
         return view('enviroment.create')->with([
             'Accion' => 'Mostrar',
             'ambiental' => $Enviroment
@@ -105,11 +104,10 @@ class EnviromentController extends Controller
             'description' => 'required'
         ]);
 
-        DB::table('enviroment')->where('id','=',$id)->update([
-            'name' => trim($request->name),
-            'description' => trim($request->description),
-            'updated_at' => now()
-        ]);
+        $e = Environment::where('id',$id)->first();
+        $e->name = $request->name;
+        $e->description = $request->description;
+        $e->save();
 
         return redirect(route('ambientales.index'));
     }
@@ -122,12 +120,15 @@ class EnviromentController extends Controller
      */
     public function destroy($id)
     {
-        $StorageDrivetype = DB::table('storage_enviroment')->where('enviroment_id','=',$id)->count();
-        if($StorageDrivetype==0){
-            DB::table('enviroment')->where('id','=',$id)->delete();
-            return redirect()->back();
-        }else{
-            return redirect()->back()->withErrors(['No puedes eliminar una precaución ambiental que tenga productos dentro']);
-        }
+      $e = Environment::where('id',$id)->first()->storages()->count();
+
+      if ($e == 0) {
+        Environment::where('id',$id)->first()->delete();
+        return redirect()->back();
+      }else{
+        return back()->withErrors([
+          'No se puede eliminar un campo que tenga registros dentro'
+        ]);
+      }
     }
 }
