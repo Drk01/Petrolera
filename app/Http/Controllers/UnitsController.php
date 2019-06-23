@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+use App\Unit;
 
 class UnitsController extends Controller
 {
@@ -17,7 +17,7 @@ class UnitsController extends Controller
      */
     public function index()
     {
-        $Units = DB::table('units')->get();
+        $Units = Unit::all();
 
         return view('units.index')->with([
             'medidas' => $Units
@@ -51,13 +51,11 @@ class UnitsController extends Controller
             'abbreviation' => 'required|unique:units,abbreviation|string'
         ]);
 
-        DB::table('units')->insert([
-            'name' => trim($request->name),
-            'description' => trim($request->description),
-            'abbreviation' => trim($request->abbreviation),
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
+        $unit = new Unit;
+        $unit->name = $request->name;
+        $unit->description = $request->description;
+        $unit->abbreviation = $request->abbreviation;
+        $unit->save();
 
         return redirect(route('medidas.index'));
     }
@@ -70,7 +68,7 @@ class UnitsController extends Controller
      */
     public function show($id)
     {
-        $Unidad = DB::table('units')->where('id','=',$id)->first();
+        $Unidad = Unit::where('id',$id)->first();
 
         return view('units.create')->with([
             'Accion' => 'Mostrar',
@@ -86,7 +84,7 @@ class UnitsController extends Controller
      */
     public function edit($id)
     {
-        $Unidad = DB::table('units')->where('id','=',$id)->first();
+        $Unidad = Unit::where('id',$id)->first();
 
         return view('units.create')->with([
             'Accion' => 'Editar',
@@ -108,12 +106,11 @@ class UnitsController extends Controller
             'abbreviation' => 'required'
         ]);
 
-        $Campo = DB::table('units')->where('id','=',$id)->update([
-            'name' => trim($request->name),
-            'description'=> trim($request->description),
-            'abbreviation' => trim($request->abbreviation),
-            'updated_at' => now()
-        ]);
+        $unit = Unit::where('id',$id)->first();
+        $unit->name = $request->name;
+        $unit->description = $request->description;
+        $unit->abbreviation = $request->abbreviation;
+        $unit->save();
 
         return redirect(route('medidas.index'));
     }
@@ -126,12 +123,15 @@ class UnitsController extends Controller
      */
     public function destroy($id)
     {
-        $Medida = DB::table('storage_unit')->where('units_id','=',$id)->count();
-        if($Medida==0){
-            DB::table('units')->where('id','=',$id)->delete();
-            return redirect()->back();
-        }else{
-            return redirect()->back()->withErrors(['No puedes eliminar una unidad de medida que tenga productos dentro']);
-        }
+      $units = Unit::where('id',$id)->first()->storages()->count();
+
+      if ($units == 0) {
+        Unit::where('id',$id)->first()->delete();
+        return redirect()->back();
+      }else{
+        return redirect()->back()->withErrors([
+          'No se puede eliminar un registro que tenga productos'
+        ]);
+      }
     }
 }
