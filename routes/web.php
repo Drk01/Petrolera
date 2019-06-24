@@ -90,3 +90,8 @@ Route::get('/', 'Auth\LoginController@showLoginForm')->middleware('guest');
    */
 
 Route::resource('/basuras', 'TrashTypeController');
+
+/**
+ * Stocks
+ */
+ Route::resource('existencias', 'StocksController');

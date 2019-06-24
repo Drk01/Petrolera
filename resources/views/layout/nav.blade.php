@@ -46,6 +46,9 @@
                     <div class="collapse" id="menu4">
 {{--                        <a href="{{ route('almacen.create') }}" class="list-group-item" data-parent="#menu4">Añadir
                             producto</a> --}}
+                            <a href="{{ route('existencias.create') }}" class="list-group-item" data-parent="#menu4">Añadir
+                                                        existencia</a>
+                            <a href="{{ route('existencias.index') }}" class="list-group-item" data-parent="#menu4">Listado de existencias</a>
                     </div>
                     <a href="#menu2" class="list-group-item d-inline-block collapsed" data-toggle="collapse"
                         data-parent="#sidebar" aria-expanded="false"><i class="fa fa-clipboard fa-lg"></i><span
